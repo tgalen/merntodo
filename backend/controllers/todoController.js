@@ -9,6 +9,10 @@ const getTodos = (req, res) => {
 // @route POST /api/todos
 // @access PRIVATE
 const createTodo = (req, res) => {
+  if (!req.body.todoTitle) {
+    res.status(400);
+    throw new Error("Please add a Todo Title");
+  }
   res.status(200).json({ message: "Create Todo" });
 };
 
