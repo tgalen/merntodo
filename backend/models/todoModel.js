@@ -17,12 +17,12 @@ const todoSchema = mongoose.Schema(
     },
     users: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       unique: true,
     },
     groups: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "group",
+      ref: "Group",
       unique: true,
     },
   },

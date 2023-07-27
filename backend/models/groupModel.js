@@ -9,7 +9,12 @@ const groupSchema = mongoose.Schema(
     },
     members: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
+      unique: true,
+    },
+    pendingMembers: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       unique: true,
     },
     description: {
@@ -17,7 +22,7 @@ const groupSchema = mongoose.Schema(
     },
   },
   {
-    timestamp: true,
+    timestamps: true,
   }
 );
 
