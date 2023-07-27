@@ -14,16 +14,6 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Please add an email"],
     },
-    groups: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Group",
-      unique: true,
-    },
-    pendingGroups: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Group",
-      unique: true,
-    },
   },
   {
     timestamps: true,

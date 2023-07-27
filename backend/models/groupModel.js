@@ -7,16 +7,16 @@ const groupSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
-    members: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      unique: true,
-    },
-    pendingMembers: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      unique: true,
-    },
+    // members: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "User",
+    //   unique: true,
+    // },
+    // pendingMembers: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "User",
+    //   unique: true,
+    // },
     description: {
       type: String,
     },
