@@ -1,12 +1,13 @@
 const asyncHandler = require("express-async-handler");
 
 const Todo = require("../models/todoModel");
+const User = require("../models/userModel");
 
 // @desc Get Todos
 // @route GET /api/todos
 // @access PRIVATE
 const getTodos = asyncHandler(async (req, res) => {
-  const todos = await Todo.find();
+  const todos = await Todo.find({ users: req.user.id });
   res.status(200).json(todos);
 });
 
@@ -23,6 +24,7 @@ const createTodo = asyncHandler(async (req, res) => {
     todoTitle: req.body.todoTitle,
     type: req.body.type,
     priority: req.body.priority,
+    users: req.user.id,
   });
   res.status(200).json(todo);
 });
@@ -36,6 +38,13 @@ const updateTodo = asyncHandler(async (req, res) => {
   if (!todo) {
     res.status(400);
     throw new Error("Todo not found");
+  }
+
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
   }
 
   const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
