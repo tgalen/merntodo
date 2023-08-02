@@ -15,8 +15,9 @@ const todoSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    users: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     groups: [{ type: mongoose.Schema.Types.ObjectId, ref: "Group" }],
+    completed: Boolean,
     // users: {
     //   type: mongoose.Schema.Types.ObjectId,
     //   ref: "User",

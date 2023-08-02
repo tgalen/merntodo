@@ -7,7 +7,7 @@ const User = require("../models/userModel");
 // @route GET /api/todos
 // @access PRIVATE
 const getTodos = asyncHandler(async (req, res) => {
-  const todos = await Todo.find({ users: req.user.id });
+  const todos = await Todo.find({ user: req.user.id });
   res.status(200).json(todos);
 });
 
@@ -24,7 +24,7 @@ const createTodo = asyncHandler(async (req, res) => {
     todoTitle: req.body.todoTitle,
     type: req.body.type,
     priority: req.body.priority,
-    users: req.user.id,
+    user: req.user.id,
   });
   res.status(200).json(todo);
 });
@@ -47,6 +47,11 @@ const updateTodo = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
+  if (todo.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("Logged in User does not own this todo");
+  }
+
   const updatedTodo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
@@ -57,12 +62,28 @@ const updateTodo = asyncHandler(async (req, res) => {
 // @route DELETE /api/todos/:id
 // @access PRIVATE
 const deleteTodo = asyncHandler(async (req, res) => {
-  const todo = await Todo.findByIdAndDelete(req.params.id);
+  const todo = await Todo.findById(req.params.id);
 
   if (!todo) {
     res.status(400);
     throw new Error("Todo not found");
   }
+
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+
+  console.log(todo);
+
+  if (todo.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("Logged in User does not own this todo");
+  }
+
+  await todo.deleteOne();
 
   res.status(200).json({ id: req.params.id });
 });
