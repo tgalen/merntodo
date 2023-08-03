@@ -76,8 +76,6 @@ const deleteTodo = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  console.log(todo);
-
   if (todo.user.toString() !== user.id) {
     res.status(401);
     throw new Error("Logged in User does not own this todo");
