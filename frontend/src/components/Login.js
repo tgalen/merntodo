@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -7,6 +8,20 @@ import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <Container sx={{ height: 1, paddingTop: 20 }}>
       <Box
@@ -30,8 +45,10 @@ const Login = () => {
             required
             fullWidth
             id="email"
-            label="Email Address"
             name="email"
+            value={email}
+            onChange={onChange}
+            label="Email Address"
             autoComplete="email"
             autoFocus
           />
@@ -44,6 +61,8 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={password}
+            onChange={onChange}
           />
           <Button
             type="submit"
