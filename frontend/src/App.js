@@ -1,5 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+
 import Button from "@mui/material/Button";
 import Groups2Icon from "@mui/icons-material/Groups2";
 import Login from "./components/Login";
@@ -9,12 +12,14 @@ import Rightbar from "./components/Rightbar";
 
 function App() {
   return (
-    <div className="App">
-      {/* <Login /> */}
-      <Sidebar />
-      <Feed />
-      <Rightbar />
-    </div>
+    <Box>
+      <Stack direction="row" spacing={2} justifyContent="space-between">
+        {/* <Login /> */}
+        <Sidebar />
+        <Feed />
+        <Rightbar />
+      </Stack>
+    </Box>
   );
 }
 
