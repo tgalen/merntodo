@@ -23,7 +23,7 @@ const Login = () => {
   };
 
   return (
-    <Container sx={{ height: 1, paddingTop: 20 }}>
+    <Container sx={{ height: 1, paddingTop: 20 }} maxWidth="sm">
       <Box
         sx={{
           boxShadow: 3,
