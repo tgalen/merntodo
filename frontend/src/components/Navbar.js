@@ -14,7 +14,7 @@ const Navbar = () => {
   const Search = styled("div")(({ theme }) => ({
     backgroundColor: "white",
     padding: "0 10px",
-    borderRadius: "5px",
+    borderRadius: theme.shape.borderRadius,
     width: "40%",
   }));
 
