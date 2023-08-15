@@ -4,6 +4,11 @@ import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import Box from "@mui/material/Box";
+import InputBase from "@mui/material/InputBase";
+import Badge from "@mui/material/Badge";
+import Mail from "@mui/icons-material/Mail";
+import Notifications from "@mui/icons-material/Notifications";
+import Avatar from "@mui/material/Avatar";
 
 const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({
@@ -19,7 +24,21 @@ const Navbar = () => {
   }));
 
   const Icons = styled(Box)(({ theme }) => ({
-    backgroundColor: "white",
+    display: "none",
+    alignItems: "center",
+    gap: "15px",
+    [theme.breakpoints.up("sm")]: {
+      display: "flex",
+    },
+  }));
+
+  const UserBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
   }));
 
   return (
@@ -29,8 +48,22 @@ const Navbar = () => {
           tasq
         </Typography>
         <FactCheckIcon sx={{ display: { xs: "block", sm: "none" } }} />
-        <Search>search</Search>
-        <Icons>icons</Icons>
+        <Search>
+          <InputBase placeholder="search..." />
+        </Search>
+        <Icons>
+          <Badge badgeContent={4} color="error">
+            <Mail color="white" />
+          </Badge>
+          <Badge badgeContent={4} color="error">
+            <Notifications color="white" />
+          </Badge>
+          <Avatar sx={{ width: 25, height: 25 }} />
+        </Icons>
+        <UserBox>
+          <Avatar sx={{ width: 25, height: 25 }} />
+          <Typography variant="span">John</Typography>
+        </UserBox>
       </StyledToolbar>
     </AppBar>
   );
