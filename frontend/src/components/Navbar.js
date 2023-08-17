@@ -9,8 +9,13 @@ import Badge from "@mui/material/Badge";
 import Mail from "@mui/icons-material/Mail";
 import Notifications from "@mui/icons-material/Notifications";
 import Avatar from "@mui/material/Avatar";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
@@ -58,13 +63,34 @@ const Navbar = () => {
           <Badge badgeContent={4} color="error">
             <Notifications color="white" />
           </Badge>
-          <Avatar sx={{ width: 25, height: 25 }} />
+          <Avatar
+            onClick={(e) => setOpen(true)}
+            sx={{ width: 25, height: 25 }}
+          />
         </Icons>
-        <UserBox>
+        <UserBox onClick={(e) => setOpen(true)}>
           <Avatar sx={{ width: 25, height: 25 }} />
           <Typography variant="span">John</Typography>
         </UserBox>
       </StyledToolbar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        open={open}
+        onClose={(e) => setOpen(false)}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 };
