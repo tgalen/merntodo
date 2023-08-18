@@ -6,21 +6,16 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Groups2Icon from "@mui/icons-material/Groups2";
 import Login from "./components/Login";
-import Sidebar from "./components/Sidebar";
-import Feed from "./components/Feed";
-import Rightbar from "./components/Rightbar";
+import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
 
 function App() {
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <Box>
       <Navbar />
-      <Stack direction="row" spacing={2} justifyContent="space-between">
-        {/* <Login /> */}
-        <Sidebar />
-        <Feed />
-        <Rightbar />
-      </Stack>
+      <Dashboard />
     </Box>
   );
 }
