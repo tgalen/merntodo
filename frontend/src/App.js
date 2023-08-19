@@ -1,21 +1,24 @@
-import logo from "./logo.svg";
+import { useState, useEffect } from "react";
 import "./App.css";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 
-import Button from "@mui/material/Button";
-import Groups2Icon from "@mui/icons-material/Groups2";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
+import Landing from "./components/Landing";
 
 function App() {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const [loggedInTasqUser, setLoggedInTasqUser] = useState(null);
+  const tasqUser = JSON.parse(localStorage.getItem("tasqUser"));
+
+  useEffect(() => {
+    tasqUser && setLoggedInTasqUser(tasqUser);
+  }, []);
 
   return (
     <Box>
       <Navbar />
-      <Dashboard />
+      {loggedInTasqUser ? <Dashboard /> : <Landing />}
     </Box>
   );
 }
