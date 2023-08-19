@@ -12,8 +12,9 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
+import Person2Icon from "@mui/icons-material/Person2";
 
-const Navbar = () => {
+const Navbar = ({ loggedInTasqUser }) => {
   const [open, setOpen] = useState(false);
 
   const StyledToolbar = styled(Toolbar)({
@@ -53,25 +54,41 @@ const Navbar = () => {
           tasq
         </Typography>
         <FactCheckIcon sx={{ display: { xs: "block", sm: "none" } }} />
-        <Search>
-          <InputBase placeholder="search..." />
-        </Search>
-        <Icons>
-          <Badge badgeContent={4} color="error">
-            <Mail color="white" />
-          </Badge>
-          <Badge badgeContent={4} color="error">
-            <Notifications color="white" />
-          </Badge>
-          <Avatar
-            onClick={(e) => setOpen(true)}
-            sx={{ width: 25, height: 25 }}
-          />
-        </Icons>
-        <UserBox onClick={(e) => setOpen(true)}>
-          <Avatar sx={{ width: 25, height: 25 }} />
-          <Typography variant="span">John</Typography>
-        </UserBox>
+        {loggedInTasqUser && (
+          <Search>
+            <InputBase placeholder="search..." />
+          </Search>
+        )}
+        {loggedInTasqUser ? (
+          <Icons>
+            <Badge badgeContent={4} color="error">
+              <Mail color="white" />
+            </Badge>
+            <Badge badgeContent={4} color="error">
+              <Notifications color="white" />
+            </Badge>
+            <Avatar
+              onClick={(e) => setOpen(true)}
+              sx={{ width: 25, height: 25 }}
+            />
+          </Icons>
+        ) : (
+          <Icons component="a" href="#" color="white">
+            <Person2Icon />
+            Login
+          </Icons>
+        )}
+        {loggedInTasqUser ? (
+          <UserBox onClick={(e) => setOpen(true)}>
+            <Avatar sx={{ width: 25, height: 25 }} />
+            <Typography variant="span">John</Typography>
+          </UserBox>
+        ) : (
+          <UserBox component="a" href="#" color="white">
+            <Person2Icon />
+            Login
+          </UserBox>
+        )}
       </StyledToolbar>
       <Menu
         id="demo-positioned-menu"
