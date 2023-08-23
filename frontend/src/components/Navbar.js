@@ -14,6 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import Person2Icon from "@mui/icons-material/Person2";
 import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import Login from "./Login";
+import LoginDialog from "./LoginDialog";
 
 const Navbar = ({ loggedInTasqUser }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
@@ -58,7 +63,7 @@ const Navbar = ({ loggedInTasqUser }) => {
   }));
 
   return (
-    <AppBar position="stick">
+    <AppBar position="sticky">
       <StyledToolbar>
         <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
           tasq
@@ -84,10 +89,23 @@ const Navbar = ({ loggedInTasqUser }) => {
           </Icons>
         ) : (
           <Icons>
-            <Button color="tertiary" variant="contained">
+            <Button
+              color="tertiary"
+              variant="contained"
+              onClick={handleLoginClickOpen}
+            >
               <Person2Icon />
               Login
             </Button>
+            <LoginDialog
+              loginOpen={loginOpen}
+              handleLoginClose={handleLoginClose}
+            />
+            {/* <Dialog open={loginOpen} onClose={handleLoginClose}>
+              <DialogContent>
+                <Login />
+              </DialogContent>
+            </Dialog> */}
           </Icons>
         )}
         {loggedInTasqUser ? (
@@ -97,7 +115,11 @@ const Navbar = ({ loggedInTasqUser }) => {
           </UserBox>
         ) : (
           <UserBox>
-            <Button variant="contained" color="tertiary">
+            <Button
+              variant="contained"
+              color="tertiary"
+              onClick={handleLoginClickOpen}
+            >
               <Person2Icon />
               Login
             </Button>
