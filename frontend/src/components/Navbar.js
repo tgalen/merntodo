@@ -13,9 +13,19 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import Person2Icon from "@mui/icons-material/Person2";
+import Button from "@mui/material/Button";
 
 const Navbar = ({ loggedInTasqUser }) => {
-  const [open, setOpen] = useState(false);
+  const [navMenuOpen, setNavMenuOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+
+  const handleLoginClickOpen = () => {
+    setLoginOpen(true);
+  };
+
+  const handleLoginClose = () => {
+    setLoginOpen(false);
+  };
 
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
@@ -68,33 +78,37 @@ const Navbar = ({ loggedInTasqUser }) => {
               <Notifications color="white" />
             </Badge>
             <Avatar
-              onClick={(e) => setOpen(true)}
+              onClick={(e) => setNavMenuOpen(true)}
               sx={{ width: 25, height: 25 }}
             />
           </Icons>
         ) : (
-          <Icons component="a" href="#" color="white">
-            <Person2Icon />
-            Login
+          <Icons>
+            <Button color="tertiary" variant="contained">
+              <Person2Icon />
+              Login
+            </Button>
           </Icons>
         )}
         {loggedInTasqUser ? (
-          <UserBox onClick={(e) => setOpen(true)}>
+          <UserBox onClick={(e) => setNavMenuOpen(true)}>
             <Avatar sx={{ width: 25, height: 25 }} />
             <Typography variant="span">John</Typography>
           </UserBox>
         ) : (
-          <UserBox component="a" href="#" color="white">
-            <Person2Icon />
-            Login
+          <UserBox>
+            <Button variant="contained" color="tertiary">
+              <Person2Icon />
+              Login
+            </Button>
           </UserBox>
         )}
       </StyledToolbar>
       <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
-        open={open}
-        onClose={(e) => setOpen(false)}
+        navMenuOpen={navMenuOpen}
+        onClose={(e) => setNavMenuOpen(false)}
         anchorOrigin={{
           vertical: "top",
           horizontal: "right",
