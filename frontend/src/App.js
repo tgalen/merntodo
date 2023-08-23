@@ -17,8 +17,15 @@ function App() {
 
   return (
     <Box>
-      <Navbar loggedInTasqUser={loggedInTasqUser} />
-      {loggedInTasqUser ? <Dashboard /> : <Landing />}
+      <Navbar
+        loggedInTasqUser={loggedInTasqUser}
+        setLoggedInTasqUser={setLoggedInTasqUser}
+      />
+      {loggedInTasqUser ? (
+        <Dashboard loggedInTasqUser={loggedInTasqUser} />
+      ) : (
+        <Landing />
+      )}
     </Box>
   );
 }

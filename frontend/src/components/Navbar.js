@@ -14,13 +14,9 @@ import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import Person2Icon from "@mui/icons-material/Person2";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import Login from "./Login";
 import LoginDialog from "./LoginDialog";
 
-const Navbar = ({ loggedInTasqUser }) => {
+const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
 
@@ -100,6 +96,8 @@ const Navbar = ({ loggedInTasqUser }) => {
             <LoginDialog
               loginOpen={loginOpen}
               handleLoginClose={handleLoginClose}
+              loggedInTasqUser={loggedInTasqUser}
+              setLoggedInTasqUser={setLoggedInTasqUser}
             />
             {/* <Dialog open={loginOpen} onClose={handleLoginClose}>
               <DialogContent>
@@ -123,6 +121,12 @@ const Navbar = ({ loggedInTasqUser }) => {
               <Person2Icon />
               Login
             </Button>
+            <LoginDialog
+              loginOpen={loginOpen}
+              handleLoginClose={handleLoginClose}
+              loggedInTasqUser={loggedInTasqUser}
+              setLoggedInTasqUser={setLoggedInTasqUser}
+            />
           </UserBox>
         )}
       </StyledToolbar>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -23,7 +24,7 @@ const LoginDialog = ({ loginOpen, handleLoginClose }) => {
   };
 
   return (
-    <Dialog open={loginOpen} onClose={handleLoginClose}>
+    <Dialog open={loginOpen} onClose={handleLoginClose} component="form">
       <DialogTitle>Sign In</DialogTitle>
       <DialogContent>
         <TextField
