@@ -28,6 +28,12 @@ const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
     setLoginOpen(false);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("tasqUser");
+    setLoggedInTasqUser(null);
+    setNavMenuOpen(false);
+  };
+
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
@@ -95,6 +101,7 @@ const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
             </Button>
             <LoginDialog
               loginOpen={loginOpen}
+              setLoginOpen={setLoginOpen}
               handleLoginClose={handleLoginClose}
               loggedInTasqUser={loggedInTasqUser}
               setLoggedInTasqUser={setLoggedInTasqUser}
@@ -118,6 +125,7 @@ const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
             </Button>
             <LoginDialog
               loginOpen={loginOpen}
+              setLoginOpen={setLoginOpen}
               handleLoginClose={handleLoginClose}
               loggedInTasqUser={loggedInTasqUser}
               setLoggedInTasqUser={setLoggedInTasqUser}
@@ -141,7 +149,7 @@ const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
       >
         <MenuItem>Profile</MenuItem>
         <MenuItem>My account</MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </AppBar>
   );

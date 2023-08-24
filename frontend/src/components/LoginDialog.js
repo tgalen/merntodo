@@ -8,7 +8,12 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 
-const LoginDialog = ({ loginOpen, handleLoginClose, setLoggedInTasqUser }) => {
+const LoginDialog = ({
+  loginOpen,
+  setLoginOpen,
+  handleLoginClose,
+  setLoggedInTasqUser,
+}) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -32,6 +37,7 @@ const LoginDialog = ({ loginOpen, handleLoginClose, setLoggedInTasqUser }) => {
     if (response.data) {
       localStorage.setItem("tasqUser", JSON.stringify(response.data));
       setLoggedInTasqUser(response.data);
+      setLoginOpen(false);
       console.log(response.data);
     } else {
       console.log("failed");
