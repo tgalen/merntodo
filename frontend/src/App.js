@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Box from "@mui/material/Box";
-
-import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
