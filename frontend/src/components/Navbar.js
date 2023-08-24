@@ -99,11 +99,6 @@ const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
               loggedInTasqUser={loggedInTasqUser}
               setLoggedInTasqUser={setLoggedInTasqUser}
             />
-            {/* <Dialog open={loginOpen} onClose={handleLoginClose}>
-              <DialogContent>
-                <Login />
-              </DialogContent>
-            </Dialog> */}
           </Icons>
         )}
         {loggedInTasqUser ? (
@@ -131,9 +126,9 @@ const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
         )}
       </StyledToolbar>
       <Menu
-        id="demo-positioned-menu"
+        id="positioned-menu"
         aria-labelledby="demo-positioned-button"
-        navMenuOpen={navMenuOpen}
+        open={navMenuOpen}
         onClose={(e) => setNavMenuOpen(false)}
         anchorOrigin={{
           vertical: "top",
