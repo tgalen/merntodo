@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 
-const LoginDialog = ({ loginOpen, handleLoginClose }) => {
+const LoginDialog = ({ loginOpen, handleLoginClose, setLoggedInTasqUser }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -23,8 +23,30 @@ const LoginDialog = ({ loginOpen, handleLoginClose }) => {
     }));
   };
 
+  const handleLoginSubmit = async () => {
+    const response = await axios.post(
+      "http://localhost:5000/api/users/login",
+      formData
+    );
+
+    if (response.data) {
+      localStorage.setItem("tasqUser", JSON.stringify(response.data));
+      setLoggedInTasqUser(response.data);
+      console.log(response.data);
+    } else {
+      console.log("failed");
+    }
+
+    return response.data;
+  };
+
   return (
-    <Dialog open={loginOpen} onClose={handleLoginClose} component="form">
+    <Dialog
+      open={loginOpen}
+      onClose={handleLoginClose}
+      component="form"
+      onSubmit={handleLoginSubmit}
+    >
       <DialogTitle>Sign In</DialogTitle>
       <DialogContent>
         <TextField
@@ -67,7 +89,7 @@ const LoginDialog = ({ loginOpen, handleLoginClose }) => {
           </Grid>
           <Grid item>
             <Link href="#" variant="body2">
-              {"Create Account"}
+              Create Account
             </Link>
           </Grid>
         </Grid>
