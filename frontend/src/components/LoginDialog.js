@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { LOGIN_API } from "../constants/constants";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
@@ -29,10 +30,7 @@ const LoginDialog = ({
   };
 
   const handleLoginSubmit = async () => {
-    const response = await axios.post(
-      "http://localhost:5000/api/users/login",
-      formData
-    );
+    const response = await axios.post(LOGIN_API, formData);
 
     if (response.data) {
       localStorage.setItem("tasqUser", JSON.stringify(response.data));
