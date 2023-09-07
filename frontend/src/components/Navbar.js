@@ -111,7 +111,7 @@ const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
         {loggedInTasqUser ? (
           <UserBox onClick={(e) => setNavMenuOpen(true)}>
             <Avatar sx={{ width: 25, height: 25 }} />
-            <Typography variant="span">John</Typography>
+            <Typography variant="span">{loggedInTasqUser.userName}</Typography>
           </UserBox>
         ) : (
           <UserBox>
