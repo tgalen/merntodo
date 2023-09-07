@@ -7,14 +7,8 @@ const todoSchema = mongoose.Schema(
       required: true,
     },
     description: String,
-    type: {
-      type: String,
-      required: true,
-    },
-    priority: {
-      type: String,
-      required: true,
-    },
+    type: String,
+    priority: String,
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     groups: [{ type: mongoose.Schema.Types.ObjectId, ref: "Group" }],
     completed: Boolean,

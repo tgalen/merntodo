@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     tasqUser && setLoggedInTasqUser(tasqUser);
   }, []);
+  console.log(loggedInTasqUser);
 
   return (
     <Box>
@@ -25,7 +26,7 @@ function App() {
       ) : (
         <Landing />
       )}
-      {loggedInTasqUser && <AddTodo />}
+      {loggedInTasqUser && <AddTodo loggedInTasqUser={loggedInTasqUser} />}
     </Box>
   );
 }
