@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Dashboard from "./components/Dashboard";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
+import AddTodo from "./components/AddTodo";
 
 function App() {
   const [loggedInTasqUser, setLoggedInTasqUser] = useState(null);
@@ -24,6 +25,7 @@ function App() {
       ) : (
         <Landing />
       )}
+      {loggedInTasqUser && <AddTodo />}
     </Box>
   );
 }
