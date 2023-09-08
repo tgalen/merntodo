@@ -1,44 +1,37 @@
 import Radio from "@mui/material/Radio";
-import { useState } from "react";
-import { theme } from "../Theme/theme";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  RadioGroup,
+} from "@mui/material";
 
-const PriorityRadioButtons = ({ selectedPriority, setSelectedPriority }) => {
+const PriorityRadioButtons = ({ setSelectedPriority }) => {
   const handleChange = (e) => {
     setSelectedPriority(e.target.value);
   };
 
-  //   const controlProps = (item) => ({
-  //     checked: selectedValue === item,
-  //     onChange: handleChange,
-  //     value: item,
-  //     name: "color-radio-button-demo",
-  //     inputProps: { "aria-label": item },
-  //   });
-
   return (
-    <div>
-      <Radio
-        label="Low"
-        checked={selectedPriority === "Low" ? true : false}
-        value="Low"
-        onChange={handleChange}
-        color="lowPriority"
-      />
-      <Radio
-        label="Medium"
-        checked={selectedPriority === "Medium" ? true : false}
-        value="Medium"
-        onChange={handleChange}
-        color="mediumPriority"
-      />
-      <Radio
-        label="High"
-        checked={selectedPriority === "High" ? true : false}
-        value="High"
-        onChange={handleChange}
-        color="highPriority"
-      />
-    </div>
+    <FormControl>
+      <FormLabel sx={{ color: "gray" }}>Priority</FormLabel>
+      <RadioGroup row onChange={handleChange}>
+        <FormControlLabel
+          value="Low"
+          control={<Radio color="lowPriority" />}
+          label="Low"
+        />
+        <FormControlLabel
+          value="Medium"
+          control={<Radio color="mediumPriority" />}
+          label="Medium"
+        />
+        <FormControlLabel
+          value="High"
+          control={<Radio color="highPriority" />}
+          label="High"
+        />
+      </RadioGroup>
+    </FormControl>
   );
 };
 
