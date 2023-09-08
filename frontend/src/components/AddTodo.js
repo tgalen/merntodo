@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import PriorityRadioButtons from "./PriorityRadioButtons";
+import { TODOS_API } from "../constants/constants";
+import axios from "axios";
 
 const StyledModal = styled(Modal)({
   display: "flex",
@@ -24,6 +26,36 @@ const UserBox = styled(Box)({
 const AddTodo = ({ loggedInTasqUser }) => {
   const [addTodoOpen, setAddTodoOpen] = useState(false);
   const [selectedPriority, setSelectedPriority] = useState("Low");
+  const [formData, setFormData] = useState({
+    todoTitle: "",
+    priority: selectedPriority,
+    description: "",
+  });
+
+  const { todoTitle, description, priority } = formData;
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${loggedInTasqUser.token}`,
+    },
+  };
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const addTodo = async () => {
+    const response = await axios.post(TODOS_API, formData, config);
+
+    if (response.data) {
+      console.log(response.data);
+    } else {
+      console.log("failed");
+    }
+  };
 
   return (
     <>
@@ -61,19 +93,26 @@ const AddTodo = ({ loggedInTasqUser }) => {
                 sx={{ width: "100%", marginBottom: "15px" }}
                 label="Todo Title"
                 variant="standard"
+                name="todoTitle"
+                value={todoTitle}
+                onChange={onChange}
               />
               <TextField
                 sx={{ width: "100%", marginBottom: "15px" }}
                 label="Decription"
                 variant="standard"
+                name="description"
+                value={description}
+                onChange={onChange}
               />
+
               <PriorityRadioButtons
                 selectedPriority={selectedPriority}
                 setSelectedPriority={setSelectedPriority}
               />
             </Box>
             <Box sx={{ width: "100%", textAlign: "right", marginTop: 3 }}>
-              <Fab variant="extended" color="primary">
+              <Fab variant="extended" color="primary" onClick={() => addTodo()}>
                 Submit
               </Fab>
             </Box>

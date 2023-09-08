@@ -25,6 +25,7 @@ const createTodo = asyncHandler(async (req, res) => {
     type: req.body.type,
     priority: req.body.priority,
     user: req.user.id,
+    description: req.body.description,
   });
   res.status(200).json(todo);
 });
