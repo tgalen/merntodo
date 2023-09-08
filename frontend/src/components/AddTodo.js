@@ -46,7 +46,7 @@ const AddTodo = ({ loggedInTasqUser }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box width={400} height={280} bgcolor="white" p={3} borderRadius={3}>
+        <Box width={400} height={350} bgcolor="white" p={3} borderRadius={3}>
           <Typography variant="h6" color="gray" textAlign="center">
             Add Todo
           </Typography>
@@ -71,6 +71,11 @@ const AddTodo = ({ loggedInTasqUser }) => {
                 selectedPriority={selectedPriority}
                 setSelectedPriority={setSelectedPriority}
               />
+            </Box>
+            <Box sx={{ width: "100%", textAlign: "right", marginTop: 3 }}>
+              <Fab variant="extended" color="primary">
+                Submit
+              </Fab>
             </Box>
           </Box>
         </Box>
