@@ -12,5 +12,14 @@ export const theme = createTheme({
     tertiary: {
       main: "#999",
     },
+    lowPriority: {
+      main: "#56db4d",
+    },
+    mediumPriority: {
+      main: "#f5ef4c",
+    },
+    highPriority: {
+      main: "#f21111",
+    },
   },
 });

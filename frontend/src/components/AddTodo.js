@@ -7,6 +7,7 @@ import styled from "@emotion/styled";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
+import PriorityRadioButtons from "./PriorityRadioButtons";
 
 const StyledModal = styled(Modal)({
   display: "flex",
@@ -22,6 +23,8 @@ const UserBox = styled(Box)({
 
 const AddTodo = ({ loggedInTasqUser }) => {
   const [addTodoOpen, setAddTodoOpen] = useState(false);
+  const [selectedPriority, setSelectedPriority] = useState("Low");
+
   return (
     <>
       <Tooltip
@@ -63,6 +66,10 @@ const AddTodo = ({ loggedInTasqUser }) => {
                 sx={{ width: "100%", marginBottom: "15px" }}
                 label="Decription"
                 variant="standard"
+              />
+              <PriorityRadioButtons
+                selectedPriority={selectedPriority}
+                setSelectedPriority={setSelectedPriority}
               />
             </Box>
           </Box>
