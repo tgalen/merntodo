@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const {
   getGroups,
   createGroup,
@@ -12,4 +11,6 @@ const { protect } = require("../middleware/authMiddleware");
 
 router.route("/").get(protect, getGroups).post(protect, createGroup);
 
-router.route("/:id").put(protect, updateGroup).delete(protect, deleteGroup);
+// router.route("/:id").put(protect, updateGroup).delete(protect, deleteGroup);
+
+module.exports = router;
