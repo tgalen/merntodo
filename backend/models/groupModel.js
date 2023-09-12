@@ -10,17 +10,25 @@ const groupSchema = mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        // unique: true,
       },
     ],
     pendingMembers: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        // unique: true
       },
     ],
     description: {
       type: String,
     },
+    todos: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Todo",
+      },
+    ],
   },
   {
     timestamps: true,

@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 
 const Group = require("../models/groupModel");
 
-const getGroupsByUser = asyncHandler(async (req, res) => {});
+const getGroups = asyncHandler(async (req, res) => {});
 
 const inviteUserToGroup = asyncHandler(async (req, res) => {});
 

@@ -9,20 +9,8 @@ const todoSchema = mongoose.Schema(
     description: String,
     type: String,
     priority: String,
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    groups: [{ type: mongoose.Schema.Types.ObjectId, ref: "Group" }],
     completed: Boolean,
     dueDate: String,
-    // users: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "User",
-    //   unique: true,
-    // },
-    // groups: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "Group",
-    //   unique: true,
-    // },
   },
   {
     timestamps: true,

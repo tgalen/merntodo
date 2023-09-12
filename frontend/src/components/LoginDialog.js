@@ -29,7 +29,8 @@ const LoginDialog = ({
     }));
   };
 
-  const handleLoginSubmit = async () => {
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
     const response = await axios.post(LOGIN_API, formData);
 
     if (response.data) {
