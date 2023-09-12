@@ -19,7 +19,7 @@ const editGroup = asyncHandler(async (req, res) => {});
 const deleteGroup = asyncHandler(async (req, res) => {});
 
 module.exports = {
-  getGroupsByUser,
+  getGroups,
   inviteUserToGroup,
   userLeaveGroup,
   editGroup,
