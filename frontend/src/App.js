@@ -9,6 +9,8 @@ import AddTodo from "./components/AddTodo";
 function App() {
   const [loggedInTasqUser, setLoggedInTasqUser] = useState(null);
   const tasqUser = JSON.parse(localStorage.getItem("tasqUser"));
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [registerOpen, setRegisterOpen] = useState(false);
 
   useEffect(() => {
     tasqUser && setLoggedInTasqUser(tasqUser);
@@ -20,11 +22,18 @@ function App() {
       <Navbar
         loggedInTasqUser={loggedInTasqUser}
         setLoggedInTasqUser={setLoggedInTasqUser}
+        loginOpen={loginOpen}
+        setLoginOpen={setLoginOpen}
       />
       {loggedInTasqUser ? (
         <Dashboard loggedInTasqUser={loggedInTasqUser} />
       ) : (
-        <Landing />
+        <Landing
+          registerOpen={registerOpen}
+          setRegisterOpen={setRegisterOpen}
+          loggedInTasqUser={loggedInTasqUser}
+          setLoggedInTasqUser={setLoggedInTasqUser}
+        />
       )}
       {loggedInTasqUser && <AddTodo loggedInTasqUser={loggedInTasqUser} />}
     </Box>

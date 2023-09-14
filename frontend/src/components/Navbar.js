@@ -16,9 +16,13 @@ import Person2Icon from "@mui/icons-material/Person2";
 import Button from "@mui/material/Button";
 import LoginDialog from "./LoginDialog";
 
-const Navbar = ({ loggedInTasqUser, setLoggedInTasqUser }) => {
+const Navbar = ({
+  loggedInTasqUser,
+  setLoggedInTasqUser,
+  loginOpen,
+  setLoginOpen,
+}) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(false);
 
   const handleLoginClickOpen = () => {
     setLoginOpen(true);
