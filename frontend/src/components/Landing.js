@@ -18,7 +18,7 @@ const Landing = ({
   return (
     <div>
       Landing
-      <Button color="tertiary" variant="contained">
+      <Button color="tertiary" variant="contained" onClick={handleRegisterOpen}>
         <AssignmentIcon />
         Register
       </Button>
@@ -27,6 +27,7 @@ const Landing = ({
         setRegisterOpen={setRegisterOpen}
         loggedInTasqUser={loggedInTasqUser}
         setLoggedInTasqUser={setLoggedInTasqUser}
+        handleRegisterClose={handleRegisterClose}
       />
     </div>
   );

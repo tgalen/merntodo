@@ -14,6 +14,7 @@ const LoginDialog = ({
   setLoginOpen,
   handleLoginClose,
   setLoggedInTasqUser,
+  setRegisterOpen,
 }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -27,6 +28,11 @@ const LoginDialog = ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const handleRegisterClick = () => {
+    setLoginOpen(false);
+    setRegisterOpen(true);
   };
 
   const handleLoginSubmit = async (e) => {
@@ -93,9 +99,7 @@ const LoginDialog = ({
             </Link>
           </Grid>
           <Grid item>
-            <Link href="#" variant="body2">
-              Create Account
-            </Link>
+            <Button onClick={handleRegisterClick}>Register</Button>
           </Grid>
         </Grid>
       </DialogContent>

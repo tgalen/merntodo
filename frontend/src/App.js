@@ -24,6 +24,7 @@ function App() {
         setLoggedInTasqUser={setLoggedInTasqUser}
         loginOpen={loginOpen}
         setLoginOpen={setLoginOpen}
+        setRegisterOpen={setRegisterOpen}
       />
       {loggedInTasqUser ? (
         <Dashboard loggedInTasqUser={loggedInTasqUser} />
