@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Box from "@mui/material/Box";
 import Dashboard from "./components/Dashboard";
@@ -18,21 +19,31 @@ function App() {
 
   return (
     <Box>
-      <Navbar
-        loggedInTasqUser={loggedInTasqUser}
-        setLoggedInTasqUser={setLoggedInTasqUser}
-        loginOpen={loginOpen}
-        setLoginOpen={setLoginOpen}
-      />
-      {loggedInTasqUser ? (
-        <Dashboard loggedInTasqUser={loggedInTasqUser} />
-      ) : (
-        <Landing
+      <BrowserRouter>
+        <Navbar
           loggedInTasqUser={loggedInTasqUser}
           setLoggedInTasqUser={setLoggedInTasqUser}
+          loginOpen={loginOpen}
+          setLoginOpen={setLoginOpen}
         />
-      )}
-      {loggedInTasqUser && <AddTodo loggedInTasqUser={loggedInTasqUser} />}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              loggedInTasqUser ? (
+                <Dashboard loggedInTasqUser={loggedInTasqUser} />
+              ) : (
+                <Landing
+                  loggedInTasqUser={loggedInTasqUser}
+                  setLoggedInTasqUser={setLoggedInTasqUser}
+                />
+              )
+            }
+          />
+        </Routes>
+
+        {loggedInTasqUser && <AddTodo loggedInTasqUser={loggedInTasqUser} />}
+      </BrowserRouter>
     </Box>
   );
 }
