@@ -21,7 +21,6 @@ const Navbar = ({
   setLoggedInTasqUser,
   loginOpen,
   setLoginOpen,
-  setRegisterOpen,
 }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
 
@@ -110,7 +109,6 @@ const Navbar = ({
               handleLoginClose={handleLoginClose}
               loggedInTasqUser={loggedInTasqUser}
               setLoggedInTasqUser={setLoggedInTasqUser}
-              setRegisterOpen={setRegisterOpen}
             />
           </Icons>
         )}
