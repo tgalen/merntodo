@@ -1,14 +1,9 @@
-import Button from "@mui/material/Button";
-import AssignmentIcon from "@mui/icons-material/Assignment";
+import Link from "@mui/material/Link";
 
-const Landing = ({ registerOpen, loggedInTasqUser, setLoggedInTasqUser }) => {
+const Landing = ({}) => {
   return (
     <div>
-      Landing
-      <Button color="tertiary" variant="contained">
-        <AssignmentIcon />
-        Register
-      </Button>
+      <Link href="/register">Register</Link>
     </div>
   );
 };

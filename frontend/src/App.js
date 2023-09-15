@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Box from "@mui/material/Box";
 import Dashboard from "./components/Dashboard";
+import Register from "./components/Register";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import AddTodo from "./components/AddTodo";
@@ -40,6 +41,7 @@ function App() {
               )
             }
           />
+          <Route element={<Register />} path="/register" />
         </Routes>
 
         {loggedInTasqUser && <AddTodo loggedInTasqUser={loggedInTasqUser} />}
