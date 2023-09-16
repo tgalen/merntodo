@@ -27,7 +27,7 @@ function App() {
   return (
     <Box
       style={{ minHeight: "100vh" }}
-      sx={{ backgroundColor: "primary.light" }}
+      sx={{ backgroundColor: "tertiary.main" }}
     >
       <BrowserRouter>
         <Navbar
