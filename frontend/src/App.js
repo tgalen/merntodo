@@ -41,7 +41,10 @@ function App() {
               )
             }
           />
-          <Route element={<Register />} path="/register" />
+          <Route
+            element={<Register setLoggedInTasqUser={setLoggedInTasqUser} />}
+            path="/register"
+          />
         </Routes>
 
         {loggedInTasqUser && <AddTodo loggedInTasqUser={loggedInTasqUser} />}

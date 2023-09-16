@@ -1,11 +1,16 @@
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
-const Register = () => {
+import { REGISTER_API } from "../constants/constants";
+
+const Register = ({ setLoggedInTasqUser }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -15,11 +20,27 @@ const Register = () => {
 
   const { email, password, confirmPassword, userName } = formData;
 
+  const navigate = useNavigate();
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+    const response = await axios.post(REGISTER_API, formData);
+
+    if (response.data) {
+      localStorage.setItem("tasqUser", JSON.stringify(response.data));
+      setLoggedInTasqUser(response.data);
+      console.log(response.data);
+      navigate("/");
+    } else {
+      console.log("Failed to Register");
+    }
   };
 
   const paperStyle = {
@@ -31,7 +52,7 @@ const Register = () => {
   return (
     <Box>
       <Paper elevation={20} style={paperStyle}>
-        <Box>
+        <Box component="form" onSubmit={handleRegisterSubmit}>
           <PersonAddAlt1Icon />
           <h2>Register</h2>
           <Typography variant="caption">
@@ -85,6 +106,14 @@ const Register = () => {
             autoComplete="confirmPassword"
             autoFocus
           />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Register
+          </Button>
         </Box>
       </Paper>
     </Box>
