@@ -14,24 +14,9 @@ import Link from "@mui/material/Link";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import Person2Icon from "@mui/icons-material/Person2";
-import Button from "@mui/material/Button";
-import LoginDialog from "./LoginDialog";
 
-const Navbar = ({
-  loggedInVigorUser,
-  setLoggedInVigorUser,
-  loginOpen,
-  setLoginOpen,
-}) => {
+const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
-
-  const handleLoginClickOpen = () => {
-    setLoginOpen(true);
-  };
-
-  const handleLoginClose = () => {
-    setLoginOpen(false);
-  };
 
   const handleLogout = () => {
     localStorage.removeItem("vigorUser");
@@ -54,6 +39,7 @@ const Navbar = ({
   const Icons = styled(Box)(({ theme }) => ({
     display: "none",
     alignItems: "center",
+    justifyContent: "center",
     gap: "15px",
     [theme.breakpoints.up("sm")]: {
       display: "flex",
@@ -98,21 +84,10 @@ const Navbar = ({
           </Icons>
         ) : (
           <Icons>
-            <Button
-              color="tertiary"
-              variant="contained"
-              onClick={handleLoginClickOpen}
-            >
-              <Person2Icon />
+            <Person2Icon />
+            <Link color="inherit" href="/login" underline="none">
               Login
-            </Button>
-            <LoginDialog
-              loginOpen={loginOpen}
-              setLoginOpen={setLoginOpen}
-              handleLoginClose={handleLoginClose}
-              loggedInVigorUser={loggedInVigorUser}
-              setLoggedInVigorUser={setLoggedInVigorUser}
-            />
+            </Link>
           </Icons>
         )}
         {loggedInVigorUser ? (
@@ -122,21 +97,10 @@ const Navbar = ({
           </UserBox>
         ) : (
           <UserBox>
-            <Button
-              variant="contained"
-              color="tertiary"
-              onClick={handleLoginClickOpen}
-            >
-              <Person2Icon />
+            <Person2Icon />
+            <Link href="/login" color="inherit" underline="none">
               Login
-            </Button>
-            <LoginDialog
-              loginOpen={loginOpen}
-              setLoginOpen={setLoginOpen}
-              handleLoginClose={handleLoginClose}
-              loggedInVigorUser={loggedInVigorUser}
-              setLoggedInVigorUser={setLoggedInVigorUser}
-            />
+            </Link>
           </UserBox>
         )}
       </StyledToolbar>

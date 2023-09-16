@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import AddTodo from "./components/AddTodo";
 import LoginPage from "./components/LoginPage";
+import LoginDialog from "./components/LoginDialog";
 
 function App() {
   const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
@@ -18,6 +19,10 @@ function App() {
     tasqUser && setLoggedInVigorUser(tasqUser);
   }, []);
   console.log(loggedInVigorUser);
+
+  const handleLoginClose = () => {
+    setLoginOpen(false);
+  };
 
   return (
     <Box>
@@ -53,6 +58,13 @@ function App() {
         </Routes>
 
         {loggedInVigorUser && <AddTodo loggedInVigorUser={loggedInVigorUser} />}
+        <LoginDialog
+          loginOpen={loginOpen}
+          setLoginOpen={setLoginOpen}
+          handleLoginClose={handleLoginClose}
+          loggedInVigorUser={loggedInVigorUser}
+          setLoggedInVigorUser={setLoggedInVigorUser}
+        />
       </BrowserRouter>
     </Box>
   );
