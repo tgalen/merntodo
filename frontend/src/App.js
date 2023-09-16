@@ -25,7 +25,10 @@ function App() {
   };
 
   return (
-    <Box>
+    <Box
+      style={{ minHeight: "100vh" }}
+      sx={{ backgroundColor: "primary.light" }}
+    >
       <BrowserRouter>
         <Navbar
           loggedInVigorUser={loggedInVigorUser}
