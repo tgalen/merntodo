@@ -4,6 +4,7 @@ const Landing = () => {
   return (
     <div>
       <Link href="/register">Register</Link>
+      <Link href="/login">Login</Link>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import AddTodo from "./components/AddTodo";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
@@ -44,6 +45,10 @@ function App() {
           <Route
             element={<Register setLoggedInVigorUser={setLoggedInVigorUser} />}
             path="/register"
+          />
+          <Route
+            element={<LoginPage setLoggedInVigorUser={setLoggedInVigorUser} />}
+            path="/login"
           />
         </Routes>
 
