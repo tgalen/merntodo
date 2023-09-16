@@ -9,21 +9,21 @@ import Landing from "./components/Landing";
 import AddTodo from "./components/AddTodo";
 
 function App() {
-  const [loggedInTasqUser, setLoggedInTasqUser] = useState(null);
+  const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
   const tasqUser = JSON.parse(localStorage.getItem("tasqUser"));
   const [loginOpen, setLoginOpen] = useState(false);
 
   useEffect(() => {
-    tasqUser && setLoggedInTasqUser(tasqUser);
+    tasqUser && setLoggedInVigorUser(tasqUser);
   }, []);
-  console.log(loggedInTasqUser);
+  console.log(loggedInVigorUser);
 
   return (
     <Box>
       <BrowserRouter>
         <Navbar
-          loggedInTasqUser={loggedInTasqUser}
-          setLoggedInTasqUser={setLoggedInTasqUser}
+          loggedInVigorUser={loggedInVigorUser}
+          setLoggedInVigorUser={setLoggedInVigorUser}
           loginOpen={loginOpen}
           setLoginOpen={setLoginOpen}
         />
@@ -31,23 +31,23 @@ function App() {
           <Route
             path="/"
             element={
-              loggedInTasqUser ? (
-                <Dashboard loggedInTasqUser={loggedInTasqUser} />
+              loggedInVigorUser ? (
+                <Dashboard loggedInVigorUser={loggedInVigorUser} />
               ) : (
                 <Landing
-                  loggedInTasqUser={loggedInTasqUser}
-                  setLoggedInTasqUser={setLoggedInTasqUser}
+                  loggedInVigorUser={loggedInVigorUser}
+                  setLoggedInVigorUser={setLoggedInVigorUser}
                 />
               )
             }
           />
           <Route
-            element={<Register setLoggedInTasqUser={setLoggedInTasqUser} />}
+            element={<Register setLoggedInVigorUser={setLoggedInVigorUser} />}
             path="/register"
           />
         </Routes>
 
-        {loggedInTasqUser && <AddTodo loggedInTasqUser={loggedInTasqUser} />}
+        {loggedInVigorUser && <AddTodo loggedInVigorUser={loggedInVigorUser} />}
       </BrowserRouter>
     </Box>
   );

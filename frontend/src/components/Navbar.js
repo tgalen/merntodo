@@ -10,6 +10,7 @@ import Mail from "@mui/icons-material/Mail";
 import Notifications from "@mui/icons-material/Notifications";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
+import Link from "@mui/material/Link";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import Person2Icon from "@mui/icons-material/Person2";
@@ -17,8 +18,8 @@ import Button from "@mui/material/Button";
 import LoginDialog from "./LoginDialog";
 
 const Navbar = ({
-  loggedInTasqUser,
-  setLoggedInTasqUser,
+  loggedInVigorUser,
+  setLoggedInVigorUser,
   loginOpen,
   setLoginOpen,
 }) => {
@@ -33,8 +34,8 @@ const Navbar = ({
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("tasqUser");
-    setLoggedInTasqUser(null);
+    localStorage.removeItem("vigorUser");
+    setLoggedInVigorUser(null);
     setNavMenuOpen(false);
   };
 
@@ -72,15 +73,17 @@ const Navbar = ({
     <AppBar position="sticky">
       <StyledToolbar>
         <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
-          tasq
+          <Link href="/" color="inherit" underline="none">
+            vigor
+          </Link>
         </Typography>
         <FactCheckIcon sx={{ display: { xs: "block", sm: "none" } }} />
-        {loggedInTasqUser && (
+        {loggedInVigorUser && (
           <Search>
             <InputBase placeholder="search..." />
           </Search>
         )}
-        {loggedInTasqUser ? (
+        {loggedInVigorUser ? (
           <Icons>
             <Badge badgeContent={4} color="error">
               <Mail color="white" />
@@ -107,15 +110,15 @@ const Navbar = ({
               loginOpen={loginOpen}
               setLoginOpen={setLoginOpen}
               handleLoginClose={handleLoginClose}
-              loggedInTasqUser={loggedInTasqUser}
-              setLoggedInTasqUser={setLoggedInTasqUser}
+              loggedInVigorUser={loggedInVigorUser}
+              setLoggedInVigorUser={setLoggedInVigorUser}
             />
           </Icons>
         )}
-        {loggedInTasqUser ? (
+        {loggedInVigorUser ? (
           <UserBox onClick={(e) => setNavMenuOpen(true)}>
             <Avatar sx={{ width: 25, height: 25 }} />
-            <Typography variant="span">{loggedInTasqUser.userName}</Typography>
+            <Typography variant="span">{loggedInVigorUser.userName}</Typography>
           </UserBox>
         ) : (
           <UserBox>
@@ -131,8 +134,8 @@ const Navbar = ({
               loginOpen={loginOpen}
               setLoginOpen={setLoginOpen}
               handleLoginClose={handleLoginClose}
-              loggedInTasqUser={loggedInTasqUser}
-              setLoggedInTasqUser={setLoggedInTasqUser}
+              loggedInVigorUser={loggedInVigorUser}
+              setLoggedInVigorUser={setLoggedInVigorUser}
             />
           </UserBox>
         )}

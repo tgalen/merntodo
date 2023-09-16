@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 
 import { REGISTER_API } from "../constants/constants";
 
-const Register = ({ setLoggedInTasqUser }) => {
+const Register = ({ setLoggedInVigorUser }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -34,8 +34,8 @@ const Register = ({ setLoggedInTasqUser }) => {
     const response = await axios.post(REGISTER_API, formData);
 
     if (response.data) {
-      localStorage.setItem("tasqUser", JSON.stringify(response.data));
-      setLoggedInTasqUser(response.data);
+      localStorage.setItem("vigorUser", JSON.stringify(response.data));
+      setLoggedInVigorUser(response.data);
       console.log(response.data);
       navigate("/");
     } else {
@@ -48,6 +48,7 @@ const Register = ({ setLoggedInTasqUser }) => {
     width: "400px",
     margin: "30px auto",
     textAlign: "center",
+    maxWidth: "80%",
   };
   return (
     <Box>
@@ -92,17 +93,19 @@ const Register = ({ setLoggedInTasqUser }) => {
             onChange={onChange}
             label="Password"
             autoComplete="password"
+            type="password"
             autoFocus
           />
           <TextField
             margin="normal"
             required
             fullWidth
-            id="confirmPassword"
             name="confirmPassword"
+            label="Confirm Password"
+            id="confirmPassword"
+            type="password"
             value={confirmPassword}
             onChange={onChange}
-            label="Confirm Password"
             autoComplete="confirmPassword"
             autoFocus
           />

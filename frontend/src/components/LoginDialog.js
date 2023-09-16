@@ -13,7 +13,7 @@ const LoginDialog = ({
   loginOpen,
   setLoginOpen,
   handleLoginClose,
-  setLoggedInTasqUser,
+  setLoggedInVigorUser,
   setRegisterOpen,
 }) => {
   const [formData, setFormData] = useState({
@@ -32,7 +32,6 @@ const LoginDialog = ({
 
   const handleRegisterClick = () => {
     setLoginOpen(false);
-    setRegisterOpen(true);
   };
 
   const handleLoginSubmit = async (e) => {
@@ -41,7 +40,7 @@ const LoginDialog = ({
 
     if (response.data) {
       localStorage.setItem("tasqUser", JSON.stringify(response.data));
-      setLoggedInTasqUser(response.data);
+      setLoggedInVigorUser(response.data);
       setLoginOpen(false);
       console.log(response.data);
     } else {

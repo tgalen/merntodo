@@ -6,12 +6,12 @@ import { useState, useEffect } from "react";
 import { TODOS_API } from "../constants/constants";
 import axios from "axios";
 
-const Dashboard = ({ loggedInTasqUser }) => {
+const Dashboard = ({ loggedInVigorUser }) => {
   const [userGroups, setUserGroups] = useState(null);
 
   const config = {
     headers: {
-      Authorization: `Bearer ${loggedInTasqUser.token}`,
+      Authorization: `Bearer ${loggedInVigorUser.token}`,
     },
   };
 

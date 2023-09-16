@@ -23,7 +23,7 @@ const UserBox = styled(Box)({
   marginBottom: "10px",
 });
 
-const AddTodo = ({ loggedInTasqUser }) => {
+const AddTodo = ({ loggedInVigorUser }) => {
   const [addTodoOpen, setAddTodoOpen] = useState(false);
   const [selectedPriority, setSelectedPriority] = useState("Low");
   const [formData, setFormData] = useState({
@@ -36,7 +36,7 @@ const AddTodo = ({ loggedInTasqUser }) => {
 
   const config = {
     headers: {
-      Authorization: `Bearer ${loggedInTasqUser.token}`,
+      Authorization: `Bearer ${loggedInVigorUser.token}`,
     },
   };
 
@@ -85,7 +85,7 @@ const AddTodo = ({ loggedInTasqUser }) => {
           <Box>
             <UserBox>
               <Typography variant="span" fontWeight={500}>
-                {loggedInTasqUser.userName}
+                {loggedInVigorUser.userName}
               </Typography>
             </UserBox>
             <Box component="form" margin={1}>
