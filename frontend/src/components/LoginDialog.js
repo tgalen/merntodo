@@ -14,7 +14,6 @@ const LoginDialog = ({
   setLoginOpen,
   handleLoginClose,
   setLoggedInVigorUser,
-  setRegisterOpen,
 }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -39,7 +38,7 @@ const LoginDialog = ({
     const response = await axios.post(LOGIN_API, formData);
 
     if (response.data) {
-      localStorage.setItem("tasqUser", JSON.stringify(response.data));
+      localStorage.setItem("vigorUser", JSON.stringify(response.data));
       setLoggedInVigorUser(response.data);
       setLoginOpen(false);
       console.log(response.data);
@@ -63,7 +62,7 @@ const LoginDialog = ({
           margin="normal"
           required
           fullWidth
-          id="email"
+          id="loginDialogEmail"
           name="email"
           value={email}
           onChange={onChange}
@@ -78,7 +77,7 @@ const LoginDialog = ({
           name="password"
           label="Password"
           type="password"
-          id="password"
+          id="loginDialogPassword"
           autoComplete="current-password"
           value={password}
           onChange={onChange}
