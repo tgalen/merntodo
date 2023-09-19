@@ -63,7 +63,9 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
             vigor
           </Link>
         </Typography>
-        <FactCheckIcon sx={{ display: { xs: "block", sm: "none" } }} />
+        <Link href="/" color="inherit">
+          <FactCheckIcon sx={{ display: { xs: "block", sm: "none" } }} />
+        </Link>
         {loggedInVigorUser && (
           <Search>
             <InputBase placeholder="search..." />
