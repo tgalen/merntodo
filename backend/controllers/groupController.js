@@ -7,6 +7,7 @@ const Group = require("../models/groupModel");
 //@access PRIVATE
 const getGroups = asyncHandler(async (req, res) => {
   const groups = await Group.find({ members: req.user.id });
+
   res.status(200).json(groups);
 });
 

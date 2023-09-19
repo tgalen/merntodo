@@ -6,17 +6,16 @@ import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
-import AddTodo from "./components/AddTodo";
 import LoginPage from "./components/LoginPage";
 import LoginDialog from "./components/LoginDialog";
 
 function App() {
   const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
-  const tasqUser = JSON.parse(localStorage.getItem("tasqUser"));
+  const vigorUser = JSON.parse(localStorage.getItem("vigorUser"));
   const [loginOpen, setLoginOpen] = useState(false);
 
   useEffect(() => {
-    tasqUser && setLoggedInVigorUser(tasqUser);
+    vigorUser && setLoggedInVigorUser(vigorUser);
   }, []);
   console.log(loggedInVigorUser);
 
@@ -59,8 +58,6 @@ function App() {
             path="/login"
           />
         </Routes>
-
-        {loggedInVigorUser && <AddTodo loggedInVigorUser={loggedInVigorUser} />}
         <LoginDialog
           loginOpen={loginOpen}
           setLoginOpen={setLoginOpen}

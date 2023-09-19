@@ -2,8 +2,9 @@ import Stack from "@mui/material/Stack";
 import Sidebar from "../components/Sidebar";
 import Feed from "../components/Feed";
 import Rightbar from "../components/Rightbar";
+import AddTodo from "./AddTodo";
 import { useState, useEffect } from "react";
-import { TODOS_API } from "../constants/constants";
+import { GROUPS_API } from "../constants/constants";
 import axios from "axios";
 
 const Dashboard = ({ loggedInVigorUser }) => {
@@ -16,14 +17,23 @@ const Dashboard = ({ loggedInVigorUser }) => {
   };
 
   const getGroups = async () => {
-    const response = await axios.get(TODOS_API);
+    const response = await axios.get(GROUPS_API, config);
+
+    setUserGroups(response.data);
   };
+
+  useEffect(() => {
+    getGroups();
+  }, []);
+
+  console.log(userGroups);
 
   return (
     <Stack direction="row" spacing={2} justifyContent="space-between">
       <Sidebar />
       <Feed />
       <Rightbar />
+      {loggedInVigorUser && <AddTodo loggedInVigorUser={loggedInVigorUser} />}
     </Stack>
   );
 };

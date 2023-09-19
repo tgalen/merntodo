@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import PriorityRadioButtons from "./PriorityRadioButtons";
-import { TODOS_API } from "../constants/constants";
+// import { TODOS_API } from "../constants/constants";
 import axios from "axios";
 
 const StyledModal = styled(Modal)({
@@ -48,13 +48,12 @@ const AddTodo = ({ loggedInVigorUser }) => {
   };
 
   const addTodo = async () => {
-    const response = await axios.post(TODOS_API, formData, config);
-
-    if (response.data) {
-      console.log(response.data);
-    } else {
-      console.log("failed");
-    }
+    // const response = await axios.post(TODOS_API, formData, config);
+    // if (response.data) {
+    //   console.log(response.data);
+    // } else {
+    //   console.log("failed");
+    // }
   };
 
   return (
