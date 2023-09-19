@@ -33,7 +33,7 @@ const Dashboard = ({ loggedInVigorUser }) => {
       <Sidebar />
       <Feed userGroups={userGroups} />
       <Rightbar />
-      {loggedInVigorUser && userGroups.length > 0 && (
+      {loggedInVigorUser && userGroups && userGroups.length > 0 && (
         <AddTodo loggedInVigorUser={loggedInVigorUser} />
       )}
     </Stack>
