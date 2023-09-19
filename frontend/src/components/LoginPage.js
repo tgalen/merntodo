@@ -7,6 +7,8 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
+
 import { LOGIN_API } from "../constants/constants";
 
 const LoginPage = ({ setLoggedInVigorUser }) => {
@@ -92,6 +94,9 @@ const LoginPage = ({ setLoggedInVigorUser }) => {
           >
             Login
           </Button>
+          <Typography>
+            Need to make an account? <Link href="/register">Register</Link>
+          </Typography>
         </Box>
       </Paper>
     </Box>

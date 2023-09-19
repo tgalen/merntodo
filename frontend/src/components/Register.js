@@ -7,6 +7,7 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
 
 import { REGISTER_API } from "../constants/constants";
 
@@ -117,6 +118,9 @@ const Register = ({ setLoggedInVigorUser }) => {
           >
             Register
           </Button>
+          <Typography>
+            Already a member? <Link href="/login">Login</Link>
+          </Typography>
         </Box>
       </Paper>
     </Box>
