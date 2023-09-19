@@ -1,6 +1,6 @@
 {
-  "short_name": "tasq",
-  "name": "tasq - Lightweight Task Management",
+  "short_name": "vigor",
+  "name": "vigor - Lightweight Task Management",
   "icons": [
     {
       "src": "favicon.ico",
@@ -23,4 +23,3 @@
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
-
