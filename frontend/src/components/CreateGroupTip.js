@@ -4,8 +4,10 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Fab from "@mui/material/Fab";
 import GroupsIcon from "@mui/icons-material/Groups";
+import AddGroup from "./AddGroup";
+import Add from "@mui/icons-material/Add";
 
-const CreateGroupTip = () => {
+const CreateGroupTip = ({ loggedInVigorUser }) => {
   return (
     <Card>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -22,10 +24,7 @@ const CreateGroupTip = () => {
           </Typography>
         </CardContent>
         <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1, m: 2 }}>
-          <Fab color="primary" aria-label="add" variant="extended">
-            <GroupsIcon style={{ marginRight: "5px" }} />
-            Add Group
-          </Fab>
+          <AddGroup loggedInVigorUser={loggedInVigorUser} />
         </Box>
       </Box>
     </Card>

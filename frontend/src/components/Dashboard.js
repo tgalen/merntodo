@@ -31,7 +31,7 @@ const Dashboard = ({ loggedInVigorUser }) => {
   return (
     <Stack direction="row" spacing={2} justifyContent="space-between">
       <Sidebar />
-      <Feed userGroups={userGroups} />
+      <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
       <Rightbar />
       {loggedInVigorUser && userGroups && userGroups.length > 0 && (
         <AddTodo loggedInVigorUser={loggedInVigorUser} />
