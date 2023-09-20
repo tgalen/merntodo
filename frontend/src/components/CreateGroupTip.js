@@ -20,7 +20,8 @@ const CreateGroupTip = ({ loggedInVigorUser }) => {
             color="text.secondary"
             component="div"
           >
-            Please add one even if you're the only member.
+            Please add one even if you're the only member. You can invite other
+            users (or not) after creating.
           </Typography>
         </CardContent>
         <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1, m: 2 }}>
