@@ -6,6 +6,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import styled from "@emotion/styled";
+import { GROUPS_API } from "../constants/constants";
+import axios from "axios";
 
 const StyledModal = styled(Modal)({
   display: "flex",
@@ -28,6 +30,22 @@ const AddGroup = ({ loggedInVigorUser }) => {
 
   const { groupName, description } = formData;
 
+  const config = {
+    headers: {
+      Authorization: `Bearer ${loggedInVigorUser.token}`,
+    },
+  };
+
+  const addGroup = async () => {
+    const response = await axios.post(GROUPS_API, formData, config);
+
+    if (response.data) {
+      console.log(response);
+    } else {
+      console.log("failed");
+    }
+  };
+
   const handleAddClick = () => {
     setAddGroupOpen(true);
   };
@@ -38,6 +56,8 @@ const AddGroup = ({ loggedInVigorUser }) => {
       [e.target.name]: e.target.value,
     }));
   };
+
+  console.log(formData);
 
   return (
     <>
@@ -83,11 +103,11 @@ const AddGroup = ({ loggedInVigorUser }) => {
                 value={description}
                 onChange={onChange}
               />
-            </Box>
-            <Box sx={{ width: "100%", textAlign: "right", marginTop: 3 }}>
-              <Fab variant="extended" color="primary">
-                Submit
-              </Fab>
+              <Box sx={{ width: "100%", textAlign: "right", marginTop: 3 }}>
+                <Fab variant="extended" color="primary" onClick={addGroup}>
+                  Submit
+                </Fab>
+              </Box>
             </Box>
           </Box>
         </Box>

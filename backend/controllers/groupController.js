@@ -15,6 +15,11 @@ const getGroups = asyncHandler(async (req, res) => {
 // @route POST api/groups
 //@access PRIVATE
 const createGroup = asyncHandler(async (req, res) => {
+  const { groupName, description } = req.body;
+  if (!groupName || !description) {
+    throw new Error("Please verify you have a Group Name nad Description");
+  }
+
   const group = await Group.create({
     groupName: req.body.groupName,
     members: [req.user.id],
