@@ -8,11 +8,13 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import LoginPage from "./components/LoginPage";
 import LoginDialog from "./components/LoginDialog";
+import Groups from "@mui/icons-material/Groups";
 
 function App() {
   const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
   const vigorUser = JSON.parse(localStorage.getItem("vigorUser"));
   const [loginOpen, setLoginOpen] = useState(false);
+  const [userGroups, setUserGroups] = useState(null);
 
   useEffect(() => {
     vigorUser && setLoggedInVigorUser(vigorUser);
@@ -40,7 +42,11 @@ function App() {
             path="/"
             element={
               loggedInVigorUser ? (
-                <Dashboard loggedInVigorUser={loggedInVigorUser} />
+                <Dashboard
+                  loggedInVigorUser={loggedInVigorUser}
+                  userGroups={userGroups}
+                  setUserGroups={setUserGroups}
+                />
               ) : (
                 <Landing
                   loggedInVigorUser={loggedInVigorUser}
@@ -52,6 +58,12 @@ function App() {
           <Route
             element={<Register setLoggedInVigorUser={setLoggedInVigorUser} />}
             path="/register"
+          />
+          <Route
+            element={
+              <Groups userGroups={userGroups} setUserGroups={setUserGroups} />
+            }
+            path="/groups"
           />
           <Route
             element={<LoginPage setLoggedInVigorUser={setLoggedInVigorUser} />}

@@ -7,9 +7,7 @@ import { useState, useEffect } from "react";
 import { GROUPS_API } from "../constants/constants";
 import axios from "axios";
 
-const Dashboard = ({ loggedInVigorUser }) => {
-  const [userGroups, setUserGroups] = useState(null);
-
+const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   const config = {
     headers: {
       Authorization: `Bearer ${loggedInVigorUser.token}`,
