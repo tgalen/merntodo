@@ -1,6 +1,9 @@
 import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 
-const Rightbar = () => {
+const Rightbar = ({ userGroups, loggedInVigorUser }) => {
   return (
     <Box
       bgcolor="lightgreen"
@@ -8,7 +11,19 @@ const Rightbar = () => {
       padding={2}
       sx={{ display: { xs: "none", sm: "block" } }}
     >
-      Rightbar
+      <List>
+        {userGroups &&
+          userGroups.map((group) => {
+            return (
+              <ListItem>
+                <ListItemText
+                  primary={group.groupName}
+                  secondary={group.description}
+                />
+              </ListItem>
+            );
+          })}
+      </List>
     </Box>
   );
 };
