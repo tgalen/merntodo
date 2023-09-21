@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import LoginPage from "./components/LoginPage";
 import LoginDialog from "./components/LoginDialog";
-import Groups from "@mui/icons-material/Groups";
+import Groups from "./components/Groups";
 
 function App() {
   const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
