@@ -16,6 +16,8 @@ function App() {
   const [loginOpen, setLoginOpen] = useState(false);
   const [userGroups, setUserGroups] = useState(null);
 
+  console.log(userGroups);
+
   useEffect(() => {
     vigorUser && setLoggedInVigorUser(vigorUser);
   }, []);

@@ -14,14 +14,18 @@ import Link from "@mui/material/Link";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import Person2Icon from "@mui/icons-material/Person2";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("vigorUser");
     setLoggedInVigorUser(null);
     setNavMenuOpen(false);
+    navigate("/");
   };
 
   const StyledToolbar = styled(Toolbar)({
