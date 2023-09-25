@@ -1,17 +1,17 @@
-import Sidebar from "./Sidebar";
-import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import GroupListItem from "./GroupListItem";
+import Stack from "@mui/material/Stack";
 
 const Groups = ({ userGroups }) => {
   return (
-    <Stack direction="row" spacing={2} justifyContent="space-between">
-      <Sidebar />
-      <Box bgcolor="pink" flex={8} padding={1}>
+    <Box bgcolor="pink" flex={4} padding={2}>
+      <Stack spacing={2}>
         {userGroups &&
-          userGroups.map((group) => <GroupListItem group={group} />)}
-      </Box>
-    </Stack>
+          userGroups.map((group) => {
+            return <GroupListItem group={group} />;
+          })}
+      </Stack>
+    </Box>
   );
 };
 

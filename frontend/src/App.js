@@ -8,7 +8,6 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import LoginPage from "./components/LoginPage";
 import LoginDialog from "./components/LoginDialog";
-import Groups from "./components/Groups";
 
 function App() {
   const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
@@ -61,12 +60,7 @@ function App() {
             element={<Register setLoggedInVigorUser={setLoggedInVigorUser} />}
             path="/register"
           />
-          <Route
-            element={
-              <Groups userGroups={userGroups} setUserGroups={setUserGroups} />
-            }
-            path="/groups"
-          />
+
           <Route
             element={<LoginPage setLoggedInVigorUser={setLoggedInVigorUser} />}
             path="/login"

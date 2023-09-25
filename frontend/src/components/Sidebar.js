@@ -34,7 +34,7 @@ const Sidebar = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="/groups">
+            <ListItemButton component="a" href="#">
               <ListItemIcon>
                 <GroupsIcon />
               </ListItemIcon>
