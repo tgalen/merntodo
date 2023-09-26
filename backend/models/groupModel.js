@@ -25,8 +25,18 @@ const groupSchema = mongoose.Schema(
     },
     todos: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Todo",
+        todoTitle: {
+          type: String,
+          required: true,
+        },
+        todoDescription: String,
+        todoType: String,
+        priority: String,
+        completed: Boolean,
+        dueDate: String,
+      },
+      {
+        timestamps: true,
       },
     ],
   },
