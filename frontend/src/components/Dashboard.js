@@ -38,7 +38,10 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
       )}
       <Rightbar userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
       {loggedInVigorUser && userGroups && userGroups.length > 0 && (
-        <AddTodo loggedInVigorUser={loggedInVigorUser} />
+        <AddTodo
+          loggedInVigorUser={loggedInVigorUser}
+          userGroups={userGroups}
+        />
       )}
     </Stack>
   );

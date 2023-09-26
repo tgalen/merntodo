@@ -8,6 +8,10 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import PriorityRadioButtons from "./PriorityRadioButtons";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
 // import { TODOS_API } from "../constants/constants";
 import axios from "axios";
 
@@ -23,9 +27,10 @@ const UserBox = styled(Box)({
   marginBottom: "10px",
 });
 
-const AddTodo = ({ loggedInVigorUser }) => {
+const AddTodo = ({ loggedInVigorUser, userGroups }) => {
   const [addTodoOpen, setAddTodoOpen] = useState(false);
   const [selectedPriority, setSelectedPriority] = useState("Low");
+  const [selectedGroup, setSelectedGroup] = useState(false);
   const [formData, setFormData] = useState({
     todoTitle: "",
     priority: selectedPriority,
@@ -47,6 +52,10 @@ const AddTodo = ({ loggedInVigorUser }) => {
     }));
   };
 
+  const handleGroupChange = (e) => {
+    setSelectedGroup(e.target.value);
+  };
+
   const addTodo = async () => {
     // const response = await axios.post(TODOS_API, formData, config);
     // if (response.data) {
@@ -55,6 +64,7 @@ const AddTodo = ({ loggedInVigorUser }) => {
     //   console.log("failed");
     // }
   };
+  userGroups ? console.log(userGroups[0].groupName) : console.log("none");
 
   return (
     <>
@@ -88,6 +98,21 @@ const AddTodo = ({ loggedInVigorUser }) => {
               </Typography>
             </UserBox>
             <Box component="form" margin={1}>
+              <FormControl sx={{ width: "100%" }}>
+                <InputLabel id="group-label">Group</InputLabel>
+                <Select
+                  value={selectedGroup}
+                  label="Group"
+                  onChange={handleGroupChange}
+                >
+                  {userGroups &&
+                    userGroups.map((group) => (
+                      <MenuItem key={group.groupName} value={group.groupName}>
+                        {group.groupName}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </FormControl>
               <TextField
                 sx={{ width: "100%", marginBottom: "15px" }}
                 label="Todo Title"
