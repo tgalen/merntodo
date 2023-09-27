@@ -71,6 +71,14 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
     );
     if (response.data) {
       console.log(response.data);
+      setFormData({
+        todoTitle: "",
+        priority: selectedPriority,
+        todoDescription: "",
+        addTodo: true,
+        completed: false,
+      });
+      setAddTodoOpen(false);
     } else {
       console.log("failed");
     }
