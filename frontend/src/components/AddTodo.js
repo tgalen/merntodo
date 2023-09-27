@@ -34,10 +34,12 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
   const [formData, setFormData] = useState({
     todoTitle: "",
     priority: selectedPriority,
-    description: "",
+    todoDescription: "",
+    addTodo: true,
+    completed: false,
   });
 
-  const { todoTitle, description, priority } = formData;
+  const { todoTitle, todoDescription, priority } = formData;
 
   const config = {
     headers: {
@@ -45,7 +47,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
     },
   };
 
-  const onChange = (e) => {
+  const handleFormOnChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -55,6 +57,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
   const handleGroupChange = (e) => {
     setSelectedGroup(e.target.value);
   };
+  // console.log(selectedGroup);
 
   const addTodo = async () => {
     // const response = await axios.post(TODOS_API, formData, config);
@@ -64,7 +67,6 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
     //   console.log("failed");
     // }
   };
-  userGroups ? console.log(userGroups[0].groupName) : console.log("none");
 
   return (
     <>
@@ -87,7 +89,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box width={400} height={350} bgcolor="white" p={3} borderRadius={3}>
+        <Box width={400} height={400} bgcolor="white" p={3} borderRadius={3}>
           <Typography variant="h6" color="gray" textAlign="center">
             Add Todo
           </Typography>
@@ -98,7 +100,9 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
               </Typography>
             </UserBox>
             <Box component="form" margin={1}>
-              <FormControl sx={{ width: "100%" }}>
+              <FormControl
+                sx={{ width: "100%", marginBottom: 2, marginTop: 1 }}
+              >
                 <InputLabel id="group-label">Group</InputLabel>
                 <Select
                   value={selectedGroup}
@@ -119,15 +123,15 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
                 variant="standard"
                 name="todoTitle"
                 value={todoTitle}
-                onChange={onChange}
+                onChange={handleFormOnChange}
               />
               <TextField
                 sx={{ width: "100%", marginBottom: "15px" }}
                 label="Decription"
                 variant="standard"
-                name="description"
-                value={description}
-                onChange={onChange}
+                name="todoDescription"
+                value={todoDescription}
+                onChange={handleFormOnChange}
               />
 
               <PriorityRadioButtons
