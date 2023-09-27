@@ -12,7 +12,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
-// import { TODOS_API } from "../constants/constants";
+import { GROUPS_API } from "../constants/constants";
 import axios from "axios";
 
 const StyledModal = styled(Modal)({
@@ -59,13 +59,21 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
   };
   // console.log(selectedGroup);
 
-  const addTodo = async () => {
-    // const response = await axios.post(TODOS_API, formData, config);
-    // if (response.data) {
-    //   console.log(response.data);
-    // } else {
-    //   console.log("failed");
-    // }
+  const addTodoToGroup = async () => {
+    const todoToEdit =
+      userGroups &&
+      userGroups.filter((group) => group.groupName === selectedGroup);
+    const todoID = todoToEdit[0]._id;
+    const response = await axios.put(
+      `${GROUPS_API}/${todoID}`,
+      formData,
+      config
+    );
+    if (response.data) {
+      console.log(response.data);
+    } else {
+      console.log("failed");
+    }
   };
 
   return (
@@ -140,7 +148,11 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
               />
             </Box>
             <Box sx={{ width: "100%", textAlign: "right", marginTop: 3 }}>
-              <Fab variant="extended" color="primary" onClick={() => addTodo()}>
+              <Fab
+                variant="extended"
+                color="primary"
+                onClick={() => addTodoToGroup()}
+              >
                 Submit
               </Fab>
             </Box>
