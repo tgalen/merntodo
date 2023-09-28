@@ -61,6 +61,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
   // console.log(selectedGroup);
 
   const addTodoToGroup = async () => {
+    // need to add todo locally
     const todoToEdit =
       userGroups &&
       userGroups.filter((group) => group.groupName === selectedGroup);
