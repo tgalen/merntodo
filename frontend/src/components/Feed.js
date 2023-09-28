@@ -7,11 +7,13 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
 
   const todos =
     userGroups &&
-    userGroups.map((group) => {
-      return group.todos.map((todo) => todo);
-    });
+    userGroups
+      .map((group) => {
+        return group.todos.map((todo) => todo);
+      })
+      .flat();
 
-  console.log(todos[0]);
+  console.log(todos);
 
   return (
     <Box bgcolor="pink" flex={4} padding={2}>
@@ -19,7 +21,7 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
         <CreateGroupTip loggedInVigorUser={loggedInVigorUser} />
       )}
       {todos &&
-        todos[0].map((todo) => {
+        todos.map((todo) => {
           return <IndividualTodo todo={todo} />;
         })}
     </Box>

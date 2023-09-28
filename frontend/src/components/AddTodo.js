@@ -37,6 +37,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
     todoDescription: "",
     addTodo: true,
     completed: false,
+    group: selectedGroup,
   });
 
   const { todoTitle, todoDescription, priority } = formData;
@@ -77,6 +78,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
         todoDescription: "",
         addTodo: true,
         completed: false,
+        group: selectedGroup,
       });
       setAddTodoOpen(false);
     } else {
