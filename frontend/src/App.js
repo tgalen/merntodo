@@ -8,19 +8,32 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import LoginPage from "./components/LoginPage";
 import LoginDialog from "./components/LoginDialog";
+import { USERS_API } from "./constants/constants";
+import axios from "axios";
 
 function App() {
   const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
   const vigorUser = JSON.parse(localStorage.getItem("vigorUser"));
   const [loginOpen, setLoginOpen] = useState(false);
   const [userGroups, setUserGroups] = useState(null);
+  const [users, setUsers] = useState(false);
 
   console.log(userGroups);
 
+  const getUsers = async () => {
+    const response = await axios.get(USERS_API);
+
+    if (response) {
+      setUsers(response.data);
+    }
+  };
+
   useEffect(() => {
     vigorUser && setLoggedInVigorUser(vigorUser);
+    getUsers();
   }, []);
   console.log(loggedInVigorUser);
+  console.log(users);
 
   const handleLoginClose = () => {
     setLoginOpen(false);

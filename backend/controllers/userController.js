@@ -42,6 +42,14 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
+//@desc get users
+//@route GET /api/users
+//@access Public
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find();
+  res.status(200).json(users);
+});
+
 // @desc Authenticate User
 // @route POST /api/users/login
 // @access PUBLIC
@@ -84,4 +92,5 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
+  getUsers,
 };
