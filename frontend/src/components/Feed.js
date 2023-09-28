@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import CreateGroupTip from "./CreateGroupTip";
+import IndividualTodo from "./IndividualTodo";
 
 const Feed = ({ userGroups, loggedInVigorUser }) => {
   const NO_USER_GROUPS = userGroups && userGroups.length === 0;
@@ -19,7 +20,7 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
       )}
       {todos &&
         todos[0].map((todo) => {
-          return <h1> {todo.todoTitle}</h1>;
+          return <IndividualTodo todo={todo} />;
         })}
     </Box>
   );
