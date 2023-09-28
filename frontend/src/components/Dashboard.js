@@ -9,7 +9,7 @@ import { GROUPS_API } from "../constants/constants";
 import axios from "axios";
 
 const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
-  const [testFeed, setTest] = useState(false);
+  const [testFeed, setTest] = useState(true);
   const config = {
     headers: {
       Authorization: `Bearer ${loggedInVigorUser.token}`,

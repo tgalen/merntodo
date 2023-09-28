@@ -34,6 +34,7 @@ const groupSchema = mongoose.Schema(
         priority: String,
         completed: Boolean,
         dueDate: String,
+        group: String,
       },
       {
         timestamps: true,
