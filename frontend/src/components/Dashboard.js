@@ -1,5 +1,6 @@
 import Stack from "@mui/material/Stack";
 import Sidebar from "../components/Sidebar";
+import Container from "@mui/material/Container";
 import Feed from "../components/Feed";
 import Rightbar from "../components/Rightbar";
 import AddTodo from "./AddTodo";
@@ -27,24 +28,34 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   }, []);
 
   console.log(userGroups);
-
   return (
-    <Stack direction="row" spacing={2} justifyContent="space-between">
-      <Sidebar />
-      {testFeed ? (
-        <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
-      ) : (
-        <Groups userGroups={userGroups} />
-      )}
-      <Rightbar userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
-      {loggedInVigorUser && userGroups && userGroups.length > 0 && (
-        <AddTodo
-          loggedInVigorUser={loggedInVigorUser}
-          userGroups={userGroups}
-        />
-      )}
-    </Stack>
+    <Container>
+      <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
+    </Container>
   );
+
+  // return (
+  //   <Stack
+  //     direction="row"
+  //     spacing={2}
+  //     justifyContent="space-between"
+  //     id="dashboard-container"
+  //   >
+  //     <Sidebar />
+  //     {testFeed ? (
+  // <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />;
+  //     ) : (
+  //       <Groups userGroups={userGroups} />
+  //     )}
+  //     <Rightbar userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
+  //     {loggedInVigorUser && userGroups && userGroups.length > 0 && (
+  //       <AddTodo
+  //         loggedInVigorUser={loggedInVigorUser}
+  //         userGroups={userGroups}
+  //       />
+  //     )}
+  //   </Stack>
+  // );
 };
 
 export default Dashboard;

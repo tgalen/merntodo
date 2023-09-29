@@ -16,13 +16,7 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
   console.log(todos);
 
   return (
-    <Box
-      bgcolor="pink"
-      flex={4}
-      padding={2}
-      minHeight="85vh"
-      sx={{ width: { xs: "100vw" }, margin: { xs: 0 } }}
-    >
+    <Box bgcolor="pink" padding={2} minHeight="85vh" id="feed">
       {NO_USER_GROUPS && (
         <CreateGroupTip loggedInVigorUser={loggedInVigorUser} />
       )}
