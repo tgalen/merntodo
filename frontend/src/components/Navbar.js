@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import Person2Icon from "@mui/icons-material/Person2";
 import { useNavigate } from "react-router-dom";
+import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
 
 const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
@@ -70,11 +71,7 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
         <Link href="/" color="inherit">
           <FactCheckIcon sx={{ display: { xs: "block", sm: "none" } }} />
         </Link>
-        {loggedInVigorUser && (
-          <Search>
-            <InputBase placeholder="search..." />
-          </Search>
-        )}
+
         {loggedInVigorUser ? (
           <Icons>
             <Badge badgeContent={4} color="error">
@@ -98,8 +95,7 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
         )}
         {loggedInVigorUser ? (
           <UserBox onClick={(e) => setNavMenuOpen(true)}>
-            <Avatar sx={{ width: 25, height: 25 }} />
-            <Typography variant="span">{loggedInVigorUser.userName}</Typography>
+            <MoreHorizSharpIcon />
           </UserBox>
         ) : (
           <UserBox>

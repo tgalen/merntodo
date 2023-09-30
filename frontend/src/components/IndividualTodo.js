@@ -5,14 +5,17 @@ import Typography from "@mui/material/Typography";
 
 const IndividualTodo = ({ todo }) => {
   return (
-    <Paper sx={{ margin: 2, p: 3, borderRadius: 3, display: "flex" }}>
-      <Container display="flex" maxWidth="10%">
-        <FactCheckIcon fontSize="medium" sx={{ margin: "auto" }} />
+    <Paper sx={{ margin: 1.1, p: 1, borderRadius: 1, height: "2rem" }}>
+      {/* <Container id="icon-container">
+        <FactCheckIcon fontSize="medium" />
       </Container>
       <Container>
-        <Typography variant="body2">{todo.todoTitle}</Typography>
+        <Typography sx={{ textOverflow: "ellipsis" }} variant="body2">
+          {todo.todoTitle}
+        </Typography>
+
         <Typography variant="caption">{todo.todoDescription}</Typography>
-      </Container>
+      </Container> */}
     </Paper>
   );
 };
