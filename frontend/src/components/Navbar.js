@@ -108,7 +108,7 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
       </StyledToolbar>
       <Menu
         id="positioned-menu"
-        aria-labelledby="demo-positioned-button"
+        aria-labelledby="positioned-button"
         open={navMenuOpen}
         onClose={(e) => setNavMenuOpen(false)}
         anchorOrigin={{
@@ -120,8 +120,8 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My account</MenuItem>
+        {/* <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem> */}
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </AppBar>
