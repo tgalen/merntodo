@@ -9,6 +9,12 @@ import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 
 const IndividualTodo = ({ todo }) => {
+  const priorityColors = {
+    high: "#fc345c",
+    medium: "#faf15d",
+    Low: "#2eb872",
+  };
+
   return (
     <Paper
       sx={{
@@ -61,7 +67,10 @@ const IndividualTodo = ({ todo }) => {
           marginLeft: "auto",
         }}
       >
-        <ReportProblemRoundedIcon fontSize="medium" sx={{ margin: "auto" }} />
+        <ReportProblemRoundedIcon
+          fontSize="medium"
+          sx={{ margin: "auto", color: `${priorityColors[todo.priority]}` }}
+        />
       </Box>
       {/* <Container id="icon-container">
         <FactCheckIcon fontSize="medium" />
