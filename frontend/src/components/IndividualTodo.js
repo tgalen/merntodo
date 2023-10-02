@@ -19,10 +19,13 @@ const IndividualTodo = ({ todo }) => {
     <Paper
       sx={{
         margin: 1.1,
+        marginLeft: "auto",
+        marginRight: "auto",
         p: 1,
         borderRadius: 1,
         height: "2rem",
         display: "flex",
+        maxWidth: "400px",
       }}
     >
       <Box
@@ -45,6 +48,8 @@ const IndividualTodo = ({ todo }) => {
           backgroundColor: "yellow",
           display: "flex",
           alignItems: "center",
+          textOverflow: "ellipsis",
+          overflow: "hidden",
         }}
       >
         <Typography
@@ -53,6 +58,7 @@ const IndividualTodo = ({ todo }) => {
             marginLeft: "5px",
           }}
           variant="body2"
+          component="span"
         >
           {todo.todoTitle}
         </Typography>
