@@ -10,7 +10,7 @@ import { GROUPS_API } from "../constants/constants";
 import axios from "axios";
 
 const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
-  const [testFeed, setTest] = useState(true);
+  const [testFeed, setTest] = useState(false);
   const config = {
     headers: {
       Authorization: `Bearer ${loggedInVigorUser.token}`,
@@ -30,12 +30,17 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   console.log(userGroups);
   return (
     <Container>
-      <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
+      {/* <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
       {loggedInVigorUser && userGroups && userGroups.length > 0 && (
         <AddTodo
           loggedInVigorUser={loggedInVigorUser}
           userGroups={userGroups}
         />
+      )} */}
+      {testFeed ? (
+        <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
+      ) : (
+        <Groups userGroups={userGroups} />
       )}
     </Container>
   );
