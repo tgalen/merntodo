@@ -15,10 +15,6 @@ const IndividualTodo = ({ todo }) => {
     Low: "#2eb872",
   };
 
-  // const remSizes = {
-
-  // }
-
   return (
     <Paper
       sx={{
@@ -59,7 +55,6 @@ const IndividualTodo = ({ todo }) => {
       >
         <Typography
           sx={{
-            // textOverflow: "ellipsis",
             marginLeft: "5px",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
