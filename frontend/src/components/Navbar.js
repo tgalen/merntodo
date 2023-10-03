@@ -44,12 +44,12 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
     justifyContent: "space-between",
   });
 
-  const Search = styled("div")(({ theme }) => ({
-    backgroundColor: "white",
-    padding: "0 10px",
-    borderRadius: theme.shape.borderRadius,
-    width: "40%",
-  }));
+  // const Search = styled("div")(({ theme }) => ({
+  //   backgroundColor: "white",
+  //   padding: "0 10px",
+  //   borderRadius: theme.shape.borderRadius,
+  //   width: "40%",
+  // }));
 
   const Icons = styled(Box)(({ theme }) => ({
     display: "none",
@@ -134,7 +134,7 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
         <MenuItem>My account</MenuItem> */}
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
         <MenuItem onClick={handleGroupLink}>Groups</MenuItem>
-        <MenuItem onClick={handleTodoLink}>Tasks</MenuItem>
+        <MenuItem onClick={handleTodoLink}>Todos</MenuItem>
       </Menu>
     </AppBar>
   );
