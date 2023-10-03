@@ -15,6 +15,10 @@ const IndividualTodo = ({ todo }) => {
     Low: "#2eb872",
   };
 
+  // const remSizes = {
+
+  // }
+
   return (
     <Paper
       sx={{
@@ -44,7 +48,7 @@ const IndividualTodo = ({ todo }) => {
       <Box
         sx={{
           height: "100%",
-          width: "12rem",
+          width: { xs: "14.5rem", sm: "18rem" },
           backgroundColor: "yellow",
           display: "flex",
           alignItems: "center",
@@ -57,20 +61,16 @@ const IndividualTodo = ({ todo }) => {
           sx={{
             // textOverflow: "ellipsis",
             marginLeft: "5px",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            display: "block",
+            maxWidth: { xs: "230px", sm: "285px" },
           }}
           variant="body2"
           component="span"
         >
-          <span
-            style={{
-              textOverflow: "ellipsis",
-              // whiteSpace: "nowrap",
-              // overflow: "hidden",
-              // display: "block",
-            }}
-          >
-            {todo.todoTitle}
-          </span>
+          {todo.todoTitle}
         </Typography>
       </Box>
 

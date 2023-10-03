@@ -29,6 +29,16 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
     navigate("/");
   };
 
+  const handleGroupLink = () => {
+    setNavMenuOpen(false);
+    navigate("/groups");
+  };
+
+  const handleTodoLink = () => {
+    setNavMenuOpen(false);
+    navigate("/");
+  };
+
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
@@ -123,6 +133,8 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
         {/* <MenuItem>Profile</MenuItem>
         <MenuItem>My account</MenuItem> */}
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem onClick={handleGroupLink}>Groups</MenuItem>
+        <MenuItem onClick={handleTodoLink}>Tasks</MenuItem>
       </Menu>
     </AppBar>
   );
