@@ -31,6 +31,12 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   return (
     <Container>
       <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
+      {loggedInVigorUser && userGroups && userGroups.length > 0 && (
+        <AddTodo
+          loggedInVigorUser={loggedInVigorUser}
+          userGroups={userGroups}
+        />
+      )}
     </Container>
   );
 

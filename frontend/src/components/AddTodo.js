@@ -19,6 +19,9 @@ const StyledModal = styled(Modal)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  maxWidth: "90%",
+  marginLeft: "auto",
+  marginRight: "auto",
 });
 
 const UserBox = styled(Box)({
