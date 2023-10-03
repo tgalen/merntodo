@@ -146,6 +146,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
                 name="todoTitle"
                 value={todoTitle}
                 onChange={handleFormOnChange}
+                inputProps={{ maxLength: 30 }}
               />
               <TextField
                 sx={{ width: "100%", marginBottom: "15px" }}
@@ -154,6 +155,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
                 name="todoDescription"
                 value={todoDescription}
                 onChange={handleFormOnChange}
+                inputProps={{ maxLength: 30 }}
               />
 
               <PriorityRadioButtons

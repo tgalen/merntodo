@@ -50,17 +50,27 @@ const IndividualTodo = ({ todo }) => {
           alignItems: "center",
           textOverflow: "ellipsis",
           overflow: "hidden",
+          whiteSpace: "nowrap",
         }}
       >
         <Typography
           sx={{
-            textOverflow: "ellipsis",
+            // textOverflow: "ellipsis",
             marginLeft: "5px",
           }}
           variant="body2"
           component="span"
         >
-          {todo.todoTitle}
+          <span
+            style={{
+              textOverflow: "ellipsis",
+              // whiteSpace: "nowrap",
+              // overflow: "hidden",
+              // display: "block",
+            }}
+          >
+            {todo.todoTitle}
+          </span>
         </Typography>
       </Box>
 
