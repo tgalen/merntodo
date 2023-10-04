@@ -32,7 +32,7 @@ const UserBox = styled(Box)({
 
 const AddTodo = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   const [addTodoOpen, setAddTodoOpen] = useState(false);
-  const [selectedPriority, setSelectedPriority] = useState("Low");
+  const [selectedPriority, setSelectedPriority] = useState("low");
   const [selectedGroup, setSelectedGroup] = useState(false);
   const [formData, setFormData] = useState({
     todoTitle: "",

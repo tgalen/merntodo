@@ -12,7 +12,7 @@ const IndividualTodo = ({ todo }) => {
   const priorityColors = {
     high: "#fc345c",
     medium: "#faf15d",
-    Low: "#2eb872",
+    low: "#2eb872",
   };
 
   return (

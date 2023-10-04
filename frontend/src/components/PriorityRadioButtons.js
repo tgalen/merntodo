@@ -16,17 +16,17 @@ const PriorityRadioButtons = ({ setSelectedPriority }) => {
       <FormLabel sx={{ color: "gray" }}>Priority</FormLabel>
       <RadioGroup row onChange={handleChange}>
         <FormControlLabel
-          value="Low"
+          value="low"
           control={<Radio color="lowPriority" />}
           label="Low"
         />
         <FormControlLabel
-          value="Medium"
+          value="medium"
           control={<Radio color="mediumPriority" />}
           label="Medium"
         />
         <FormControlLabel
-          value="High"
+          value="high"
           control={<Radio color="highPriority" />}
           label="High"
         />
