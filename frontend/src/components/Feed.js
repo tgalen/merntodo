@@ -55,9 +55,10 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
             onChange={groupFilterOnChange}
           >
             <MenuItem value="All">Show All</MenuItem>
-            {userGroups.map((g) => (
-              <MenuItem value={g.groupName}>{g.groupName}</MenuItem>
-            ))}
+            {userGroups &&
+              userGroups.map((g) => (
+                <MenuItem value={g.groupName}>{g.groupName}</MenuItem>
+              ))}
           </Select>
         </FormControl>
       )}
