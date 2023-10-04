@@ -30,7 +30,7 @@ const UserBox = styled(Box)({
   marginBottom: "10px",
 });
 
-const AddTodo = ({ loggedInVigorUser, userGroups }) => {
+const AddTodo = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   const [addTodoOpen, setAddTodoOpen] = useState(false);
   const [selectedPriority, setSelectedPriority] = useState("Low");
   const [selectedGroup, setSelectedGroup] = useState(false);
@@ -63,6 +63,25 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
   };
   // console.log(selectedGroup);
 
+  const addTodoToGroupLocally = () => {
+    // const indexOfGroupToedit = userGroups.findIndex(
+    //   (group) => group.groupName === selectedGroup
+    // );
+    // console.log(indexOfGroupToedit);
+    // console.log(selectedGroup);
+    // userGroups[indexOfGroupToedit].todos.unshift(formData);
+    const updatedUSerGroups =
+      userGroups &&
+      userGroups.map((g) => {
+        if (g.groupName === selectedGroup) {
+          g.todos.unshift(formData);
+          return g;
+        }
+        return g;
+      });
+
+    setUserGroups([...updatedUSerGroups]);
+  };
   const addTodoToGroup = async () => {
     // need to add todo locally
     const todoToEdit =
@@ -76,6 +95,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
     );
     if (response.data) {
       console.log(response.data);
+      addTodoToGroupLocally();
       setFormData({
         todoTitle: "",
         priority: selectedPriority,
@@ -84,6 +104,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups }) => {
         completed: false,
         group: selectedGroup,
       });
+
       setAddTodoOpen(false);
     } else {
       console.log("failed");

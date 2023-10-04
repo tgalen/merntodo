@@ -5,7 +5,7 @@ import IndividualGroup from "./IndividualGroup";
 
 const Groups = ({ userGroups }) => {
   return (
-    <Box bgcolor="pink" padding={2} minHeight="85vh">
+    <Box bgcolor="pink" padding={2} minHeight="80vh">
       {/* <Stack spacing={2}>
         {userGroups &&
           userGroups.map((group) => {
