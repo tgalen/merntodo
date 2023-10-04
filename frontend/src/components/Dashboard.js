@@ -4,6 +4,7 @@ import Container from "@mui/material/Container";
 import Feed from "../components/Feed";
 import Rightbar from "../components/Rightbar";
 import AddTodo from "./AddTodo";
+import AddGroup from "./AddGroup";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
@@ -73,7 +74,7 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
           setUserGroups={setUserGroups}
         />
       ) : (
-        <AddTodo
+        <AddGroup
           loggedInVigorUser={loggedInVigorUser}
           userGroups={userGroups}
           setUserGroups={setUserGroups}

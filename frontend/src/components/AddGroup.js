@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
+import AddIcon from "@mui/icons-material/Add";
+
 import Fab from "@mui/material/Fab";
-import GroupsIcon from "@mui/icons-material/Groups";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -13,6 +15,9 @@ const StyledModal = styled(Modal)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  maxWidth: "90%",
+  marginLeft: "auto",
+  marginRight: "auto",
 });
 
 const UserBox = styled(Box)({
@@ -21,7 +26,7 @@ const UserBox = styled(Box)({
   marginBottom: "10px",
 });
 
-const AddGroup = ({ loggedInVigorUser }) => {
+const AddGroup = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   const [addGroupOpen, setAddGroupOpen] = useState(false);
   const [formData, setFormData] = useState({
     groupName: "",
@@ -36,18 +41,26 @@ const AddGroup = ({ loggedInVigorUser }) => {
     },
   };
 
+  const addTodoToGroupLocally = () => {
+    const currentGroups = [...userGroups];
+    currentGroups.push(formData);
+    setUserGroups([...currentGroups]);
+  };
+
   const addGroup = async () => {
     const response = await axios.post(GROUPS_API, formData, config);
 
     if (response.data) {
       console.log(response);
+      // addTodoToGroupLocally();
+      setAddGroupOpen(false);
+      setFormData({
+        groupName: "",
+        description: "",
+      });
     } else {
       console.log("failed");
     }
-  };
-
-  const handleAddClick = () => {
-    setAddGroupOpen(true);
   };
 
   const onChange = (e) => {
@@ -61,15 +74,19 @@ const AddGroup = ({ loggedInVigorUser }) => {
 
   return (
     <>
-      <Fab
-        color="primary"
-        aria-label="add"
-        variant="extended"
-        onClick={handleAddClick}
+      <Tooltip
+        onClick={(e) => setAddGroupOpen(true)}
+        title="Add Group"
+        sx={{
+          position: "fixed",
+          bottom: 20,
+          left: { xs: "calc(50% - 25px)", md: 30 },
+        }}
       >
-        <GroupsIcon style={{ marginRight: "5px" }} />
-        Add Group
-      </Fab>
+        <Fab color="primary" aria-label="add">
+          <AddIcon />
+        </Fab>
+      </Tooltip>
       <StyledModal
         open={addGroupOpen}
         onClose={() => setAddGroupOpen(false)}
