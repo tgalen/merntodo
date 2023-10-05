@@ -23,7 +23,7 @@ const IndividualTodo = ({ todo }) => {
         marginRight: "auto",
         p: 1,
         borderRadius: 1,
-        height: "2rem",
+        height: "2.5rem",
         display: "flex",
         maxWidth: "400px",
       }}
@@ -46,27 +46,53 @@ const IndividualTodo = ({ todo }) => {
           height: "100%",
           width: { xs: "14.5rem", sm: "18rem" },
           backgroundColor: "yellow",
-          display: "flex",
-          alignItems: "center",
+          display: "block",
           textOverflow: "ellipsis",
           overflow: "hidden",
           whiteSpace: "nowrap",
         }}
       >
-        <Typography
+        <Box sx={{ height: "50%" }} id="todo-title">
+          <Typography
+            sx={{
+              marginLeft: "5px",
+              marginTop: 0,
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              display: "block",
+              fontWeight: 550,
+              // color: "gray",
+              maxWidth: { xs: "230px", sm: "285px" },
+            }}
+            // variant="body2"
+            component="span"
+          >
+            {todo.todoTitle}
+          </Typography>
+        </Box>
+        <Box
           sx={{
+            height: "50%",
             marginLeft: "5px",
+            marginTop: 0,
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
             overflow: "hidden",
             display: "block",
             maxWidth: { xs: "230px", sm: "285px" },
           }}
-          variant="body2"
-          component="span"
         >
-          {todo.todoTitle}
-        </Typography>
+          <Typography
+            variant="caption"
+            component="span"
+            sx={{
+              fontWeight: "light",
+            }}
+          >
+            {todo.groupName}
+          </Typography>
+        </Box>
       </Box>
 
       <Box
