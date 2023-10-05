@@ -68,7 +68,11 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
         />
       )} */}
       {display === "todos" ? (
-        <Feed userGroups={userGroups} loggedInVigorUser={loggedInVigorUser} />
+        <Feed
+          userGroups={userGroups}
+          setUserGroups={setUserGroups}
+          loggedInVigorUser={loggedInVigorUser}
+        />
       ) : (
         <Groups userGroups={userGroups} />
       )}

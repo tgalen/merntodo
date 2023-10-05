@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-const Feed = ({ userGroups, loggedInVigorUser }) => {
+const Feed = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
   const [groupFilter, setGroupFilter] = useState("All");
   const NO_USER_GROUPS = userGroups && userGroups.length === 0;
 
@@ -67,7 +67,12 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
       {todos &&
         todos.map((todo) => {
           return (
-            <IndividualTodo todo={todo} loggedInVigorUser={loggedInVigorUser} />
+            <IndividualTodo
+              todo={todo}
+              loggedInVigorUser={loggedInVigorUser}
+              setUserGroups={setUserGroups}
+              userGroups={userGroups}
+            />
           );
         })}
     </Box>

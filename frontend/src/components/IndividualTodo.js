@@ -16,7 +16,12 @@ import Divider from "@mui/material/Divider";
 import { GROUPS_API } from "../constants/constants";
 import axios from "axios";
 
-const IndividualTodo = ({ todo, loggedInVigorUser }) => {
+const IndividualTodo = ({
+  todo,
+  loggedInVigorUser,
+  userGroups,
+  setUserGroups,
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleMenuClick = (event) => {
@@ -27,6 +32,18 @@ const IndividualTodo = ({ todo, loggedInVigorUser }) => {
     headers: {
       Authorization: `Bearer ${loggedInVigorUser.token}`,
     },
+  };
+
+  const deleteTodoLocally = () => {
+    const updatedUserGroups =
+      userGroups &&
+      userGroups.map((userGroup) => {
+        const filteredTodos = userGroup.todos.filter((t) => t._id !== todo._id);
+        const updatedGroup = { ...userGroup, todos: filteredTodos };
+        return updatedGroup;
+      });
+    console.log(updatedUserGroups);
+    setUserGroups([...updatedUserGroups]);
   };
 
   const handleDeleteTodo = async () => {
@@ -40,7 +57,7 @@ const IndividualTodo = ({ todo, loggedInVigorUser }) => {
     if (response.data) {
       console.log(response.data);
       setMenuOpen(false);
-      //handle locally
+      deleteTodoLocally();
     } else {
       console.log("failed");
     }
