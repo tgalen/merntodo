@@ -42,7 +42,12 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   return (
     <Container>
       <Box>
-        <BottomNavigation showLabels value={display} onChange={handleNavChange}>
+        <BottomNavigation
+          showLabels
+          value={display}
+          onChange={handleNavChange}
+          sx={{ backgroundColor: "inherit" }}
+        >
           <BottomNavigationAction
             label="Todos"
             icon={<FormatListBulletedIcon />}

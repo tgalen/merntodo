@@ -39,7 +39,7 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
 
   return (
     <Box
-      bgcolor="pink"
+      bgcolor="inherit"
       padding={2}
       height="74vh"
       id="todo-feed"
