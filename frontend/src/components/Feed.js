@@ -29,7 +29,9 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
     userGroups &&
     groupsFilteredByGroup
       .map((group) => {
-        return group.todos.map((todo) => todo);
+        return group.todos.map((todo) => {
+          return { ...todo, groupName: group.groupName };
+        });
       })
       .flat();
 
