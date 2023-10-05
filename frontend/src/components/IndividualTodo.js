@@ -5,8 +5,9 @@ import FormatListBulletedRoundedIcon from "@mui/icons-material/FormatListBullete
 import ReportProblemRoundedIcon from "@mui/icons-material/ReportProblemRounded";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
+import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
@@ -138,9 +139,15 @@ const IndividualTodo = ({ todo }) => {
           horizontal: "right",
         }}
       >
-        <MenuItem>Mark Completed</MenuItem>
+        <MenuItem>
+          <CheckBoxOutlinedIcon sx={{ paddingRight: 1 }} />
+          Mark Completed
+        </MenuItem>
         <Divider />
-        <MenuItem>Delete</MenuItem>
+        <MenuItem>
+          <DeleteForeverIcon sx={{ paddingRight: 1 }} />
+          Delete
+        </MenuItem>
       </Menu>
       {/* <Container id="icon-container">
         <FactCheckIcon fontSize="medium" />
