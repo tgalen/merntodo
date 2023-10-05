@@ -7,8 +7,19 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
+import { useState } from "react";
+import Divider from "@mui/material/Divider";
 
 const IndividualTodo = ({ todo }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   const priorityColors = {
     high: "#fc345c",
     medium: "#faf15d",
@@ -103,12 +114,34 @@ const IndividualTodo = ({ todo }) => {
           display: "flex",
           marginLeft: "auto",
         }}
+        onClick={(e) => {
+          setMenuOpen(true);
+          handleMenuClick(e);
+        }}
       >
-        <ReportProblemRoundedIcon
+        {/* <ReportProblemRoundedIcon
           fontSize="medium"
           sx={{ margin: "auto", color: `${priorityColors[todo.priority]}` }}
-        />
+        /> */}
+        <MoreHorizSharpIcon sx={{ margin: "auto", fontSize: "medium" }} />
       </Box>
+      <Menu
+        open={menuOpen}
+        onClose={(e) => setMenuOpen(false)}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+      >
+        <MenuItem>Mark Completed</MenuItem>
+        <Divider />
+        <MenuItem>Delete</MenuItem>
+      </Menu>
       {/* <Container id="icon-container">
         <FactCheckIcon fontSize="medium" />
       </Container>

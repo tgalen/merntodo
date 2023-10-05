@@ -49,7 +49,7 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
         <CreateGroupTip loggedInVigorUser={loggedInVigorUser} />
       )}
       {!NO_USER_GROUPS && (
-        <FormControl fullWidth>
+        <FormControl fullWidth sx={{ marginBottom: 1 }}>
           <InputLabel id="group-select">Group</InputLabel>
           <Select
             value={groupFilter}
