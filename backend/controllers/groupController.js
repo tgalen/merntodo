@@ -37,26 +37,40 @@ const userLeaveGroup = asyncHandler(async (req, res) => {});
 //@route PUT /groups/:id
 //@access private
 const editGroup = asyncHandler(async (req, res) => {
-  const todo = req.body.addTodo && {
-    todoTitle: req.body.todoTitle,
-    todoDescription: req.body.todoDescription,
-    todoType: req.body.todoType,
-    priority: req.body.priority,
-    completed: req.body.completed,
-    dueDate: req.body.dueDate,
-  };
-  const updatedGroup = await Group.findByIdAndUpdate(
-    { _id: req.params.id },
-    { $push: { todos: todo } },
-    { new: true }
-  );
-  console.log(updatedGroup);
-
-  if (!updatedGroup) {
-    res.status(400).json({ message: "Group not found." });
-  } else {
-    res.status(200).json(todo);
+  if (req.body.addTodo) {
+    const todo = {
+      todoTitle: req.body.todoTitle,
+      todoDescription: req.body.todoDescription,
+      todoType: req.body.todoType,
+      priority: req.body.priority,
+      completed: req.body.completed,
+      dueDate: req.body.dueDate,
+    };
+    const updatedGroup = await Group.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $push: { todos: todo } },
+      { new: true }
+    );
+    console.log(updatedGroup);
   }
+
+  if (req.body.deleteTodo) {
+    const updatedGroup = await Group.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $pull: { todos: { todoTitle: req.body.todoTitle } } },
+      { new: true }
+    );
+    console.log(updatedGroup);
+    if (updatedGroup) {
+      res.status(200).json({ message: "Todo Deleted" });
+    }
+  }
+
+  // if (!updatedGroup) {
+  //   res.status(400).json({ message: "Group not found." });
+  // } else {
+  //   res.status(200).json(todo);
+  // }
 });
 
 const deleteGroup = asyncHandler(async (req, res) => {});

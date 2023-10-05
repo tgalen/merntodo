@@ -13,12 +13,37 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreHorizSharpIcon from "@mui/icons-material/MoreHorizSharp";
 import { useState } from "react";
 import Divider from "@mui/material/Divider";
+import { GROUPS_API } from "../constants/constants";
+import axios from "axios";
 
-const IndividualTodo = ({ todo }) => {
+const IndividualTodo = ({ todo, loggedInVigorUser }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${loggedInVigorUser.token}`,
+    },
+  };
+
+  const handleDeleteTodo = async () => {
+    console.log(`${GROUPS_API}/${todo.groupID}`);
+    const response = await axios.put(
+      `${GROUPS_API}/${todo.groupID}`,
+      { deleteTodo: true, todoTitle: todo.todoTitle },
+      config
+    );
+
+    if (response.data) {
+      console.log(response.data);
+      setMenuOpen(false);
+      //handle locally
+    } else {
+      console.log("failed");
+    }
   };
 
   const priorityColors = {
@@ -144,7 +169,7 @@ const IndividualTodo = ({ todo }) => {
           Mark Completed
         </MenuItem>
         <Divider />
-        <MenuItem>
+        <MenuItem onClick={handleDeleteTodo}>
           <DeleteForeverIcon sx={{ paddingRight: 1 }} />
           Delete
         </MenuItem>

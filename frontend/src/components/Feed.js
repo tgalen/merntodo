@@ -30,7 +30,7 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
     groupsFilteredByGroup
       .map((group) => {
         return group.todos.map((todo) => {
-          return { ...todo, groupName: group.groupName };
+          return { ...todo, groupName: group.groupName, groupID: group._id };
         });
       })
       .flat();
@@ -66,7 +66,9 @@ const Feed = ({ userGroups, loggedInVigorUser }) => {
       )}
       {todos &&
         todos.map((todo) => {
-          return <IndividualTodo todo={todo} />;
+          return (
+            <IndividualTodo todo={todo} loggedInVigorUser={loggedInVigorUser} />
+          );
         })}
     </Box>
   );
