@@ -64,12 +64,6 @@ const AddTodo = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   // console.log(selectedGroup);
 
   const addTodoToGroupLocally = () => {
-    // const indexOfGroupToedit = userGroups.findIndex(
-    //   (group) => group.groupName === selectedGroup
-    // );
-    // console.log(indexOfGroupToedit);
-    // console.log(selectedGroup);
-    // userGroups[indexOfGroupToedit].todos.unshift(formData);
     const updatedUSerGroups =
       userGroups &&
       userGroups.map((g) => {
@@ -95,7 +89,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
     );
     if (response.data) {
       console.log(response.data);
-      addTodoToGroupLocally();
+      // addTodoToGroupLocally();
       setFormData({
         todoTitle: "",
         priority: selectedPriority,

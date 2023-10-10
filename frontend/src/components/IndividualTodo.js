@@ -42,7 +42,6 @@ const IndividualTodo = ({
         const updatedGroup = { ...userGroup, todos: filteredTodos };
         return updatedGroup;
       });
-    console.log(updatedUserGroups);
     setUserGroups([...updatedUserGroups]);
   };
 
