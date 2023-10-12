@@ -44,6 +44,8 @@ const Feed = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
       height="74vh"
       id="todo-feed"
       overflow="auto"
+      maxWidth="500px"
+      margin="auto"
     >
       {NO_USER_GROUPS && (
         <CreateGroupTip loggedInVigorUser={loggedInVigorUser} />
