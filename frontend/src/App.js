@@ -8,8 +8,9 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import LoginPage from "./components/LoginPage";
 import LoginDialog from "./components/LoginDialog";
-import { USERS_API } from "./constants/constants";
+import { USERS_API, GROUPS_API } from "./constants/constants";
 import axios from "axios";
+import GroupDashboard from "./components/GroupDashboard";
 
 function App() {
   const [loggedInVigorUser, setLoggedInVigorUser] = useState(null);
@@ -18,7 +19,13 @@ function App() {
   const [userGroups, setUserGroups] = useState(null);
   const [users, setUsers] = useState(false);
 
-  console.log(userGroups);
+  const config = loggedInVigorUser && {
+    headers: {
+      Authorization: `Bearer ${loggedInVigorUser.token}`,
+    },
+  };
+
+  userGroups && console.log(userGroups.length);
 
   const getUsers = async () => {
     const response = await axios.get(USERS_API);
@@ -28,10 +35,22 @@ function App() {
     }
   };
 
+  const getGroups = async () => {
+    const response = await axios.get(GROUPS_API, config);
+
+    if (response) {
+      setUserGroups(response.data);
+    }
+  };
+
   useEffect(() => {
     vigorUser && setLoggedInVigorUser(vigorUser);
     getUsers();
   }, []);
+
+  useEffect(() => {
+    loggedInVigorUser && getGroups();
+  }, [loggedInVigorUser]);
   console.log(loggedInVigorUser);
   console.log(users);
 
@@ -77,6 +96,15 @@ function App() {
           <Route
             element={<LoginPage setLoggedInVigorUser={setLoggedInVigorUser} />}
             path="/login"
+          />
+          <Route
+            element={
+              <GroupDashboard
+                userGroups={userGroups}
+                loggedInVigorUser={loggedInVigorUser}
+              />
+            }
+            path="/:id"
           />
         </Routes>
         <LoginDialog

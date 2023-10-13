@@ -2,8 +2,11 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import GroupsIcon from "@mui/icons-material/Groups";
+import Link from "@mui/material/Link";
+import { useNavigate } from "react-router-dom";
 
 const IndividualGroup = ({ group }) => {
+  console.log(group);
   return (
     <Paper
       sx={{
@@ -51,7 +54,7 @@ const IndividualGroup = ({ group }) => {
           variant="body2"
           component="span"
         >
-          {group.groupName}
+          <Link href={`/${group._id}`}>{group.groupName}</Link>
         </Typography>
       </Box>
       <Box

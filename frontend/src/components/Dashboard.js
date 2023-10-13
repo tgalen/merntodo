@@ -18,21 +18,21 @@ import axios from "axios";
 
 const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   const [display, setDisplay] = useState("todos");
-  const config = {
-    headers: {
-      Authorization: `Bearer ${loggedInVigorUser.token}`,
-    },
-  };
+  // const config = {
+  //   headers: {
+  //     Authorization: `Bearer ${loggedInVigorUser.token}`,
+  //   },
+  // };
 
-  const getGroups = async () => {
-    const response = await axios.get(GROUPS_API, config);
+  // const getGroups = async () => {
+  //   const response = await axios.get(GROUPS_API, config);
 
-    setUserGroups(response.data);
-  };
+  //   setUserGroups(response.data);
+  // };
 
-  useEffect(() => {
-    getGroups();
-  }, []);
+  // useEffect(() => {
+  //   getGroups();
+  // }, []);
 
   const handleNavChange = (e, value) => {
     setDisplay(value);
