@@ -20,20 +20,16 @@ const groupSchema = mongoose.Schema(
         // unique: true
       },
     ],
-    description: {
-      type: String,
-    },
+
     todos: [
       {
         todoTitle: {
           type: String,
           required: true,
         },
-        todoDescription: String,
-        todoType: String,
+        // todoType: String,
         priority: String,
         completed: Boolean,
-        dueDate: String,
         group: String,
       },
       {
