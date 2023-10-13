@@ -116,7 +116,11 @@ const AddTodo = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
           left: { xs: "calc(50% - 25px)", md: 30 },
         }}
       >
-        <Fab color="primary" aria-label="add">
+        <Fab
+          color="primary"
+          aria-label="add"
+          disabled={userGroups === null || userGroups.length === 0}
+        >
           <AddIcon />
         </Fab>
       </Tooltip>
