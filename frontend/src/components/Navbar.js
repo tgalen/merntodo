@@ -29,11 +29,6 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
     navigate("/");
   };
 
-  const handleGroupLink = () => {
-    setNavMenuOpen(false);
-    navigate("/groups");
-  };
-
   const handleTodoLink = () => {
     setNavMenuOpen(false);
     navigate("/");
@@ -133,7 +128,6 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
         {/* <MenuItem>Profile</MenuItem>
         <MenuItem>My account</MenuItem> */}
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
-        <MenuItem onClick={handleGroupLink}>Groups</MenuItem>
         <MenuItem onClick={handleTodoLink}>Todos</MenuItem>
       </Menu>
     </AppBar>

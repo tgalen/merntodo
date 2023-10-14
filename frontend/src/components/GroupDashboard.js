@@ -6,9 +6,9 @@ const GroupDashboard = ({ userGroups }) => {
   const userGroup =
     userGroups && userGroups.filter((group) => group._id === groupID);
 
-  console.log(userGroups);
+  console.log(userGroup);
 
-  return <div>GroupDashboard {groupID}</div>;
+  return <div>GroupDashboard {userGroup && userGroup[0].groupName}</div>;
 };
 
 export default GroupDashboard;
