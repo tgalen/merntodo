@@ -37,6 +37,7 @@ const Navbar = ({ loggedInVigorUser, setLoggedInVigorUser }) => {
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
+    background: 'linear-gradient(45deg, #7434af 0%, #a639d2 100%)'
   });
 
   // const Search = styled("div")(({ theme }) => ({
