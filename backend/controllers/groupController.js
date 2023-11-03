@@ -29,7 +29,20 @@ const createGroup = asyncHandler(async (req, res) => {
   res.status(200).json(group);
 });
 
-const inviteUserToGroup = asyncHandler(async (req, res) => {});
+//@desc invite user to group
+//@route PUT api/groups/invite/:id
+//@access private
+const inviteUserToGroup = asyncHandler(async (req, res) => {
+  const updatedGroup = await Group.findByIdAndUpdate(
+    { _id: req.params.id },
+    { $push: { pendingMembers: rwg.body.selectedUser } },
+    { new: true }
+  );
+
+  if (updatedGroup) {
+    res.status(200).json({ message: "Invite sent" });
+  }
+});
 
 const userLeaveGroup = asyncHandler(async (req, res) => {});
 
