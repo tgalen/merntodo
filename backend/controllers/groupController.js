@@ -33,6 +33,7 @@ const createGroup = asyncHandler(async (req, res) => {
 //@route PUT api/groups/invite/:id
 //@access private
 const inviteUserToGroup = asyncHandler(async (req, res) => {
+  //need to add a check to see if user was already invited
   const updatedGroup = await Group.findByIdAndUpdate(
     { _id: req.params.id },
     { $push: { pendingMembers: req.body.selectedUser } },
