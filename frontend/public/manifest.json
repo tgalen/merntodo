@@ -1,6 +1,8 @@
 {
   "short_name": "vigor",
   "name": "vigor - Lightweight Task Management",
+  "description": "A fast and efficient task management tool.",
+  "categories": ["productivity", "task-management"],
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +22,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#7434af",
+  "background_color": "#a639d2"
 }
