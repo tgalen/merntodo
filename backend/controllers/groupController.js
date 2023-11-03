@@ -35,7 +35,7 @@ const createGroup = asyncHandler(async (req, res) => {
 const inviteUserToGroup = asyncHandler(async (req, res) => {
   const updatedGroup = await Group.findByIdAndUpdate(
     { _id: req.params.id },
-    { $push: { pendingMembers: rwg.body.selectedUser } },
+    { $push: { pendingMembers: req.body.selectedUser } },
     { new: true }
   );
 
