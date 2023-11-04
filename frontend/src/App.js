@@ -102,6 +102,7 @@ function App() {
               <GroupDashboard
                 userGroups={userGroups}
                 loggedInVigorUser={loggedInVigorUser}
+                setUserGroups={setUserGroups}
               />
             }
             path="/:id"
