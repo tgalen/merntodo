@@ -68,6 +68,8 @@ const IndividualTodo = ({
     low: "#2eb872",
   };
 
+  console.log(todo);
+
   return (
     <Paper
       sx={{

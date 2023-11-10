@@ -10,6 +10,12 @@ const GroupDashboard = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
   const userGroup =
     userGroups && userGroups.filter((group) => group._id === groupID);
 
+  const todosWithGroupName =
+    userGroups &&
+    userGroup[0].todos.map((todo) => {
+      return { ...todo, groupName: userGroup[0].groupName };
+    });
+
   console.log(userGroup);
 
   return (
@@ -27,8 +33,8 @@ const GroupDashboard = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
         margin="auto"
       >
         {userGroups &&
-          userGroup[0].todos.length > 0 &&
-          userGroup[0].todos.map((todo) => {
+          todosWithGroupName.length > 0 &&
+          todosWithGroupName.map((todo) => {
             return (
               <IndividualTodo
                 todo={todo}
