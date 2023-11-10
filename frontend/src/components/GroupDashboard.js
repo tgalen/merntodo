@@ -13,7 +13,11 @@ const GroupDashboard = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
   const todosWithGroupName =
     userGroups &&
     userGroup[0].todos.map((todo) => {
-      return { ...todo, groupName: userGroup[0].groupName };
+      return {
+        ...todo,
+        groupName: userGroup[0].groupName,
+        groupID: userGroup[0]._id,
+      };
     });
 
   console.log(userGroup);
