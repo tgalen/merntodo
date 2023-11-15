@@ -1,8 +1,18 @@
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import IndividualTodo from "./IndividualTodo";
 
-const GroupDashboard = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
+import IndividualTodo from "./IndividualTodo";
+import IndividualUser from "./IndividualUser";
+
+const GroupDashboard = ({
+  userGroups,
+  loggedInVigorUser,
+  setUserGroups,
+  users,
+}) => {
+  const [display, setDisplay] = useState("todos");
+
   const currentURL = window.location.href;
   const splitURL = currentURL.split("/");
   const groupID = splitURL[splitURL.length - 1];
@@ -20,7 +30,15 @@ const GroupDashboard = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
       };
     });
 
-  console.log(userGroup);
+  console.log(users);
+  const groupMembers =
+    userGroups &&
+    users &&
+    users.filter((user) => {
+      return userGroup[0].members.includes(user._id);
+    });
+
+  console.log(groupMembers);
 
   return (
     <Box>
@@ -31,7 +49,7 @@ const GroupDashboard = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
         bgcolor="inherit"
         padding={2}
         height="74vh"
-        id="group-todo-feed"
+        id="group-feed"
         overflow="auto"
         maxWidth="500px"
         margin="auto"
@@ -47,6 +65,10 @@ const GroupDashboard = ({ userGroups, loggedInVigorUser, setUserGroups }) => {
                 userGroups={userGroups}
               />
             );
+          })}
+        {userGroups &&
+          groupMembers.map((member) => {
+            return <IndividualUser user={member} />;
           })}
       </Box>
     </Box>

@@ -103,6 +103,7 @@ function App() {
                 userGroups={userGroups}
                 loggedInVigorUser={loggedInVigorUser}
                 setUserGroups={setUserGroups}
+                users={users}
               />
             }
             path="/:id"
