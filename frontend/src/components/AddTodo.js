@@ -54,6 +54,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   const handleFormOnChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
+      priority: selectedPriority,
       [e.target.name]: e.target.value,
     }));
   };
