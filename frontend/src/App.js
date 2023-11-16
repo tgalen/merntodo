@@ -53,6 +53,7 @@ function App() {
   }, [loggedInVigorUser]);
   console.log(loggedInVigorUser);
   console.log(users);
+  console.log(userGroups);
 
   const handleLoginClose = () => {
     setLoginOpen(false);

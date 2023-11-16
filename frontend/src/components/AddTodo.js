@@ -87,8 +87,8 @@ const AddTodo = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
       formData,
       config
     );
-    if (response.data) {
-      console.log(response.data);
+    if (response) {
+      console.log(response);
       // addTodoToGroupLocally();
       setFormData({
         todoTitle: "",
@@ -104,7 +104,7 @@ const AddTodo = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
       console.log("failed");
     }
   };
-
+  console.log(selectedPriority);
   return (
     <>
       <Tooltip

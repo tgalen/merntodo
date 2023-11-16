@@ -66,6 +66,9 @@ const editGroup = asyncHandler(async (req, res) => {
       { new: true }
     );
     console.log(updatedGroup);
+    if (updatedGroup) {
+      res.status(200).json({ message: "Todo added" });
+    }
   }
 
   if (req.body.deleteTodo) {
