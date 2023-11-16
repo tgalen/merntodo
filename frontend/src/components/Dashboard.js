@@ -9,6 +9,7 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import GroupsIcon from "@mui/icons-material/Groups";
+import Badge from "@mui/material/Badge";
 
 import Box from "@mui/material/Box";
 import Groups from "./Groups";
@@ -41,7 +42,7 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
   console.log(userGroups);
   return (
     <Container>
-      <Box>
+      <Box marginTop={2}>
         <BottomNavigation
           showLabels
           value={display}
@@ -55,7 +56,11 @@ const Dashboard = ({ loggedInVigorUser, userGroups, setUserGroups }) => {
           />
           <BottomNavigationAction
             label="Groups"
-            icon={<GroupsIcon />}
+            icon={
+              <Badge badgeContent={2} color="secondary">
+                <GroupsIcon />
+              </Badge>
+            }
             value="groups"
           />
         </BottomNavigation>
