@@ -6,7 +6,9 @@ const Group = require("../models/groupModel");
 //@route GET api/grooups
 //@access PRIVATE
 const getGroups = asyncHandler(async (req, res) => {
-  const groups = await Group.find({ members: req.user.id });
+  const groups = await Group.find({
+    $or: [{ members: req.user.id }, { pendingMembers: req.user.id }],
+  });
 
   res.status(200).json(groups);
 });
